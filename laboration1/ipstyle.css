@@ -9,6 +9,16 @@
     color:gray;
 }
 
+article{
+    background-color: highlight;
+    padding:5px;
+    margin:25px 0px;
+}
+
 textarea{
     width: 100%;
+}
+
+fieldset{
+    background-color: highlight;
 }
