@@ -1,0 +1,10 @@
+.times-new-roman-22{
+    font-family: 'Times New Roman';/*bydefault on chrome*/
+    font-size: 22px;
+    color:black;
+}
+.arial-16{
+    font-family: Arial;
+    font-size: 16px; /*bydefault on chrome*/
+    color:gray;
+}

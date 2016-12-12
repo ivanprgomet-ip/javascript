@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="ipstyle.css">
+</head>
+
+<body>
+    <h1>Main Header</h1>
+    <h2>Sub header 1
+    </h2>
+    <p class="times-new-roman-22">
+        This is a 22px font size paragraph with the font family times new roman
+    </p>
+    <p class="arial-16">
+        This is a 16px font size paragraph with the font family arial
+    </p>
+    <p class="arial-16">
+        This is a 16px font size paragraph with the font family arial
+    </p>
+    <h2>
+        sub header 2
+    </h2>
+    <form action="">
+        <fieldset>
+            <legend>profile</legend>
+            <!--
+            HIDDEN FIELD EXPLAINED
+            
+            The NAME setting adds an internal name to the field 
+            so the program that handles the form can identify the fields.
+            
+            The VALUE setting defines what will be sent once the form is submitted.
+            -->
+            <input type="hidden" name="name of the hidden field" value="value of the hidden field">
+
+            <label for="username">username:</label>
+            <input type="text" id="username">
+
+            <label for="firstname">firstname:</label>
+            <input type="text" id="firstname">
+
+            <label>lastname:
+            <input type="text" id="lastname">
+       </label>
+
+            <label for="phone">phone:</label>
+            <input type="text" id="phone">
+
+            <label for="city">city:</label>
+            <input type="text" id="city">
+            <button name="submit" id="submit" onclick="PopulateTextArea();">
+                submit
+            </button>
+            <textarea id="makemevisible" value="hehe"></textarea>
+        </fieldset>
+    </form>
+</body>
+
+</html>
+<script>
+    function PopulateTextArea(){
+        var completeString = document.getElementById("username").value+" "+
+        document.getElementById("firstname").value+" "+
+        document.getElementById("lastname").value+" "+
+        document.getElementById("phone").value;
+        
+        document.getElementById("makemevisible").value = completeString;
+    }
+</script>
+
+<!--TODO: when i press the button, populate the textarea with all the textbx values-->
