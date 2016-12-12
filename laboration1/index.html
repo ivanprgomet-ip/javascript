@@ -22,18 +22,9 @@
     <h2>
         sub header 2
     </h2>
-    <form action="">
+    <form id="myForm">
         <fieldset>
             <legend>profile</legend>
-            <!--
-            HIDDEN FIELD EXPLAINED
-            
-            The NAME setting adds an internal name to the field 
-            so the program that handles the form can identify the fields.
-            
-            The VALUE setting defines what will be sent once the form is submitted.
-            -->
-            <input type="hidden" name="name of the hidden field" value="value of the hidden field">
 
             <label for="username">username:</label>
             <input type="text" id="username">
@@ -50,24 +41,37 @@
 
             <label for="city">city:</label>
             <input type="text" id="city">
-            <button name="submit" id="submit" onclick="PopulateTextArea();">
+            <br>
+            <br>
+
+            <button name="submit" id="submit" onclick="return PopulateTextArea()">
                 submit
             </button>
-            <textarea id="makemevisible" value="hehe"></textarea>
+            <br>
+            <br>
+
         </fieldset>
     </form>
+        <textarea id="makemevisible" readonly="true" hidden="true"></textarea>
 </body>
-
-</html>
 <script>
     function PopulateTextArea(){
+
         var completeString = document.getElementById("username").value+" "+
         document.getElementById("firstname").value+" "+
         document.getElementById("lastname").value+" "+
         document.getElementById("phone").value;
         
-        document.getElementById("makemevisible").value = completeString;
+        var textareaelement = document.getElementById("makemevisible");
+        textareaelement.style.display = "block";
+        textareaelement.innerHTML = completeString;
+        textareaelement.style.backgroundColor = "green";
+        textareaelement.style.color = "white";
+        
+        document.getElementById("myForm").style.display = "none";
+
+        return false; //Have the function return false to stop submission (postback where value dissaperas immediately)
     }
 </script>
 
-<!--TODO: when i press the button, populate the textarea with all the textbx values-->
+</html>
