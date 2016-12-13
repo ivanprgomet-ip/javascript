@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="ipstyle.css">
+    </head>
+
+    <body>
+        <form id="myForm" action="#">
+            <label for="username">username</label>
+            <input type="text" id="username">
+            <label for="firstname">lastname</label>
+            <input type="text" id="firstname">
+            <label for="lastname">lastname</label>
+            <input type="text" id="lastname">
+            <label for="phone">phone</label>
+            <input type="text" id="phone">
+            <label for="city">city:</label>
+            <input type="city" id="city">
+            <label for="age">age</label>
+            <input type="text" id="age">
+            <br>
+            <button name="send" id="send" onclick="Validate()">send</button>
+        </form>
+        <br>
+        <div id="error-message">
+
+        </div>
+        <br>
+        <input type="text" id="text-hidden">
+    </body>
+</html>
+<script src="javascript.js"></script>
