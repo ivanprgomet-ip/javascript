@@ -8,6 +8,7 @@ function Person(firstname, lastname, age) {
         }
 }
 
+//array of prototypes
 var personsList01 = [
     new Person("ivan", "prgomet", 24),
     new Person("Jason", "Bourne", 37),
@@ -16,12 +17,11 @@ var personsList01 = [
     new Person("Scott", "Allen", 43),
 ];
 
+//array of objects
 var personsList02 = [
-    new Person("ivano", "prgometo", 24),
-    new Person("Jasono", "Bourneo", 37),
-    new Person("Leao", "Winchestero", 47),
-    new Person("Duncano", "Welderso", 27),
-    new Person("Scotto", "Alleno", 43),
+    {firstname:"ivano",lastname:"prgometo",age:24},
+    {firstname:"jasono",lastname:"bourneo",age:33},
+    {firstname:"duncano",lastname:"welderso",age:55},
 ];
 
 
@@ -46,8 +46,8 @@ $(document).ready(function () {
     //print second array of persons to another UL elemnt
     $.each(personsList02, function (key, value) {
         if(key%2==0)
-            $("#person-list-two").append("<li>" + key + " " + value.Fullname() + "</li>")
+            $("#person-list-two").append("<li>" + key + " " + value.firstname +" "+value.lastname+ "</li>")
         else
-            $("#person-list-two").append("<li style='background-color:highlight;'>" + key + " " + value.Fullname() + "</li>")            
+            $("#person-list-two").append("<li style='background-color:highlight;'>" + key + " " + value.firstname +" "+value.lastname+ "</li>")            
 })
 })
