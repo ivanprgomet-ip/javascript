@@ -1,0 +1,1 @@
+document.getElementById("btn-show-text").addEventListener("click", MyNamespace.SubNamespace.PrintAllPersons);
