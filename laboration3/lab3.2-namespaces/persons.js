@@ -24,7 +24,6 @@ MyNamespace.SubNamespace.Person = function(firstname, lastname, age) {
             return this.Firstname + " " + this.Lastname;
         }
 }
-            
 
 //creating array of persons (prototypes) inside of MyNamespace
 MyNamespace.SubNamespace.persons = [
