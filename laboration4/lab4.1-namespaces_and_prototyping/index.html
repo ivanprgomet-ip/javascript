@@ -28,16 +28,25 @@
             new Car("audi"),
         ]
 
-        
+
 
         $(document).ready(function () {
-            $("#btn-show-employees").click(PrintEmployees);
-
-            function PrintEmployees() {
-                $("#list1").append(
-                    "kljhkljhkjlh"
-                );
+            
+            function populateList1() {
+                $.each(employees, function (key, value) {
+                    $("#list1").append("<li>" + value.Name + "</li>")
+                })
             };
+            function populateList2() {
+                $.each(cars, function (key, value) {
+                    $("#list2").append("<li>" + value.Name + "</li>")
+                })
+            };
+
+            $("#btn-show-employees").click(populateList1);
+            $("#btn-show-cars").click(populateList2);
+            
+
 
 
         });
@@ -56,7 +65,10 @@
         show cars
     </button>
     <ul id="list1">
-        
+
+    </ul>
+    <ul id="list2">
+
     </ul>
 </body>
 
