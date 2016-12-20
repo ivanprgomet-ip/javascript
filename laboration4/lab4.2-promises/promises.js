@@ -23,24 +23,32 @@ var cars = [
 ]
 
 $(document).ready(function () {
-    var driversLicenseMsg = "";
+    function PrintEmployees() {
+        var dfd = $.Deferred();//----------PROMISE
+        $.each(employees, function (currentIndex, currentValue) {//iterate every employees
 
-    function populateList1() {
-        $.each(employees, function (key, value) {
-            if (value.HasDriversLicense)
-                $("#list1").append("<li>" + value.Name + " has a drivers license </li>")
-            else
-                $("#list1").append("<li>" + value.Name + " has no drivers license </li>")
-        })
-    };
-    function populateList2() {
-        $.each(cars, function (key, value) {
-            $("#list2").append("<li>" + value.Name + "</li>")
-        })
-    };
+            if (currentValue.HasDriversLicense) {
+                //only resolve employees that have a drivers license
+                console.log(currentValue.Name + " has a drivers license");
+                dfd.resolve();//----------PROMISE
+            }
+            else {
+                //reject employees that dont have a drivers license
+                console.log(currentValue.Name + " doesnt have a drivers license");
+                dfd.reject();//----------PROMISE
+            }
 
-    $("#btn-show-employees").click(populateList1);
-    $("#btn-show-cars").click(populateList2);
+            return dfd.promise();//----------PROMISE
+        });
+    }
 
-});
+    PrintEmployees().then(function () {
+        alert("Awesome.. inside success method");
+    }, function () {
+        alert("Totally unawesome ... Inside Fail method");
+    }).always(function () {
+        alert("Work is done now wheter good or bad");
+    });
+
+})
 
