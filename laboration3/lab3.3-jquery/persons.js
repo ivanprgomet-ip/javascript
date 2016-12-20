@@ -19,10 +19,11 @@ var personsList01 = [
 
 //array of objects
 var personsList02 = [
-    {firstname:"ivano",lastname:"prgometo",age:24},
-    {firstname:"jasono",lastname:"bourneo",age:33},
-    {firstname:"duncano",lastname:"welderso",age:55},
+    { firstname: "ivano", lastname: "prgometo", age: 24 },
+    { firstname: "jasono", lastname: "bourneo", age: 33 },
+    { firstname: "duncano", lastname: "welderso", age: 55 },
 ];
+
 
 
 /*
@@ -31,23 +32,35 @@ var personsList02 = [
     running multiple defined multiple defined functions
 */
 $(document).ready(function () {
+
+    //fades the second list out onclick
+    $("#btn-fadeout").click(function () {
+        $("#person-list-two").fadeOut(1000);
+    });
+
+    $("#btn-fadein").click(FadeInListOne).fadeIn(1000);
+    
+    function FadeInListOne(){
+        $("person-list-one").append("asöldfjk");
+    };
+
     /*
         foreach person in personlist01, run the function
         KEY is the current index, VALUE is the current person from the array
         access all the currents persons properties using the VALUE.property or function 
     */
     $.each(personsList01, function (key, value) {
-         if(key%2==0)
+        if (key % 2 == 0)
             $("#person-list-one").append("<li>" + key + " " + value.Fullname() + "</li>")
         else
-            $("#person-list-one").append("<li style='background-color:highlight;'>" + key + " " + value.Fullname() + "</li>")       
+            $("#person-list-one").append("<li style='background-color:highlight;'>" + key + " " + value.Fullname() + "</li>")
     })
 
     //print second array of persons to another UL elemnt
     $.each(personsList02, function (key, value) {
-        if(key%2==0)
-            $("#person-list-two").append("<li>" + key + " " + value.firstname +" "+value.lastname+ "</li>")
+        if (key % 2 == 0)
+            $("#person-list-two").append("<li>" + key + " " + value.firstname + " " + value.lastname + "</li>")
         else
-            $("#person-list-two").append("<li style='background-color:highlight;'>" + key + " " + value.firstname +" "+value.lastname+ "</li>")            
-})
+            $("#person-list-two").append("<li style='background-color:highlight;'>" + key + " " + value.firstname + " " + value.lastname + "</li>")
+    })
 })

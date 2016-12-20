@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="jquery-3.1.1.min.js"></script>
+    <script>
+        var persons1 = [
+            { firstname: "ivan", lastname: "prgeotm", age: 24, city: "lund" },
+            { firstname: "lea", lastname: "winchester", age: 24, city: "london" },
+            { firstname: "jason", lastname: "bourne", age: 24, city: "manchester" },
+            { firstname: "john", lastname: "doe", age: 24, city: "oimnjakov" },]
+        var persons2 = [
+            { firstname: "ivano", lastname: "prgeotmo", age: 24, city: "lundo" },
+            { firstname: "leao", lastname: "winchestero", age: 24, city: "londono" },
+            { firstname: "jasono", lastname: "bourneo", age: 24, city: "manchestero" },
+            { firstname: "johno", lastname: "doeo", age: 24, city: "oimnjakovo" },]
+
+
+
+        $(document).ready(function () {
+            //runs whenever the complete page is rendered
+            function PrintPersons1() {
+                $.each(persons1, function (index, currentObject) {
+                    $("#list1").append("<li>" + currentObject.firstname + " " + currentObject.lastname + "</li>")
+                })
+            }
+
+            
+
+            //NOT FINNISHED
+
+
+            PrintPersons1();
+            
+        })
+    </script>
+</head>
+
+<body>
+    <ul id="list1">
+
+    </ul>
+    <ul id="list2">
+
+    </ul>
+</body>
+
+</html>

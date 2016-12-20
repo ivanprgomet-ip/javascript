@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>home</title>
+    <script src="jquery-3.1.1.min.js"></script>
+
+    <script>
+        var Employee = function (name) {
+            this.Name = name;
+            return this.Name;
+        }
+
+        var Car = function (name) {
+            this.Name = name;
+            return this.Name;
+        }
+
+        var employees = [
+            new Employee("ivan"),
+            new Employee("lea"),
+            new Employee("jason"),
+        ]
+
+        var cars = [
+            new Car("fiat"),
+            new Car("peugeot"),
+            new Car("audi"),
+        ]
+
+        
+
+        $(document).ready(function () {
+            $("#btn-show-employees").click(PrintEmployees);
+
+            function PrintEmployees() {
+                $("#list1").append(
+                    "kljhkljhkjlh"
+                );
+            };
+
+
+        });
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <button id="btn-show-employees">
+        show employees
+    </button>
+    <button id="btn-show-cars">
+        show cars
+    </button>
+    <ul id="list1">
+        
+    </ul>
+</body>
+
+</html>
