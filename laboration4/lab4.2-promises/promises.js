@@ -23,29 +23,32 @@ var cars = [
 ]
 
 $(document).ready(function () {
-    function FetchPromise() {
+    var employeeListElement = document.getElementById("list1");
+
+
+    function FetchPromise(currentValue) {
         var dfd = $.Deferred();
-        $.each(employees, function (currentIndex, currentValue) {//iterate every employees
+        if (currentValue.HasDriversLicense) {
+            dfd.resolve();
+        }
+        else {
+            dfd.reject();
+        }
 
-            if (currentValue.HasDriversLicense) {
-                console.log(currentValue.Name + " has a drivers license");
-                dfd.resolve();
-            }
-            else {
-                console.log(currentValue.Name + " doesnt have a drivers license");
-                dfd.reject();
-            }
-
-            return dfd.promise();//----------PROMISE
-        });
+        return dfd.promise();//----------PROMISE
     }
 
-    FetchPromise().then(function () {
-        console.log("Awesome.. inside success method");
-    }, function () {
-        console.log("Totally unawesome ... Inside Fail method");
-    }).always(function () {
-        console.log("Work is done now wheter good or bad");
+    $.each(employees, function (currentIndex, currentValue) {
+        FetchPromise(currentValue).then(function () {
+            //this runs if the fetched promise object was resolved
+            $("#list1").append(currentValue.Name+" has a license to drive <br/>");
+        }, function () {
+            //this runs if the fetched promise object was rejected
+            $("#list1").append("found person that doesnt have a license to drive <br/>");
+        }).always(function () {
+            //this will allways run, whether fetched promise was resolved or rejected
+            $("#list1").append("_____________________________________________<br/>");
+        });
     });
 
 })
