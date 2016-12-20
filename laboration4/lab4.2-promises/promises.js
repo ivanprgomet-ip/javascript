@@ -23,31 +23,29 @@ var cars = [
 ]
 
 $(document).ready(function () {
-    function PrintEmployees() {
-        var dfd = $.Deferred();//----------PROMISE
+    function FetchPromise() {
+        var dfd = $.Deferred();
         $.each(employees, function (currentIndex, currentValue) {//iterate every employees
 
             if (currentValue.HasDriversLicense) {
-                //only resolve employees that have a drivers license
                 console.log(currentValue.Name + " has a drivers license");
-                dfd.resolve();//----------PROMISE
+                dfd.resolve();
             }
             else {
-                //reject employees that dont have a drivers license
                 console.log(currentValue.Name + " doesnt have a drivers license");
-                dfd.reject();//----------PROMISE
+                dfd.reject();
             }
 
             return dfd.promise();//----------PROMISE
         });
     }
 
-    PrintEmployees().then(function () {
-        alert("Awesome.. inside success method");
+    FetchPromise().then(function () {
+        console.log("Awesome.. inside success method");
     }, function () {
-        alert("Totally unawesome ... Inside Fail method");
+        console.log("Totally unawesome ... Inside Fail method");
     }).always(function () {
-        alert("Work is done now wheter good or bad");
+        console.log("Work is done now wheter good or bad");
     });
 
 })
