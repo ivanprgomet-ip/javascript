@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html data-ng-app>
+
+<head>
+    <script src="scripts/angular.min.js"></script>
+</head>
+
+<body data-ng-init="students=[{name:'ivan prgoemt', city:'lund',phone:'923487593'},
+                                        {name:'lea winchester', city:'london',phone:'392845'},
+                                        {name:'james bond', city:'mi6',phone:'92387'},
+                                        {name:'jason bourne', city:'manchester',phone:'293847'},
+                                        ]">
+
+    <h2>Looping and filtering with angular js</h2>
+    filter: <input type="text" data-ng-model="filterlist">
+    <ul>
+        <li data-ng-repeat="student in students | filter:filterlist">
+            {{student.name}} | {{student.city}} | {{student.phone}}
+        </li>
+    </ul>
+
+</body>
+
+</html>

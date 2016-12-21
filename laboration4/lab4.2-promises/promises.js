@@ -38,18 +38,21 @@ $(document).ready(function () {
         return dfd.promise();//----------PROMISE
     }
 
+    function resolvedFunction() {
+        $("#list1").append(currentValue.Name + " has a license to drive <br/>");
+    }
+
     $.each(employees, function (currentIndex, currentValue) {
         FetchPromise(currentValue).then(function () {
             //this runs if the fetched promise object was resolved
-            $("#list1").append(currentValue.Name+" has a license to drive <br/>");
+            $("#list1").append(currentValue.Name + " has a license to drive <br/>");
         }, function () {
             //this runs if the fetched promise object was rejected
             $("#list1").append("found person that doesnt have a license to drive <br/>");
         }).always(function () {
             //this will allways run, whether fetched promise was resolved or rejected
-            $("#list1").append("_____________________________________________<br/>");
+            $("#list1").append("DONE<br/>");
         });
     });
-
 })
 

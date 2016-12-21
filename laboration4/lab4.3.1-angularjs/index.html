@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="scripts/angular.min.js"></script>
+</head>
+
+<body data-ng-app data-ng-init="cars=['Volvo XC90 – Modell 2014',
+                                        'ferrari 360 - Modell 2016',
+                                        'kia sorrento - Modell 2013',
+                                        'volvo v70 - Modell 1929',
+                                        'audi a6 - Modell 2002',
+                                        'chevrolet corvette - Modell 2009',
+                                        'lamborgini aventador - Modell 2012']">
+    <small>the body tag contains the ng-app. this means that the area inside of the 
+        body tag is controller by Angular. the ng-app can only be used once per page,
+        so it is quite common to have the ng-app on the html element of the page, or in 
+        our case, the body element of the page. now all our angular expressions must exist 
+        withing the body tag of the page to work. if we try to use angular inside of an element 
+        that is not within the scope of the ng-app, it won't work! 
+    </small>
+
+    <h2>Looping with angular js and ng-repeat</h2>
+    <small>there is a total of {{cars.length}} cars in the array</small>
+    <ul>
+        <li data-ng-repeat="car in cars">
+            {{car}}
+        </li>
+    </ul>
+
+</body>
+
+</html>
