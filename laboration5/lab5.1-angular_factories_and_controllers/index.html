@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="angular.min.js"></script>
+    <script src="myapp.js"></script>
+</head>
+<body>
+    <div ng-controller="HomeController">
+        <!--the HomeController rules this area-->
+
+        <button ng-click="GetStudents()">get students</button>
+        <button ng-click="GetEducations()">get educations</button>
+
+        <h2>students</h2>
+        <ul id="students-list">
+            <li  ng-repeat="student in students">
+                {{student.studentName}}, {{student.education}}
+            </li>
+        </ul>
+
+        <h2>educations</h2>
+        <ul id="educations-list">
+            <li ng-repeat="education in educations">
+                {{education.educationName}}
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+</html>
