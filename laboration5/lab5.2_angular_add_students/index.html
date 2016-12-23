@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="angular.min.js"></script>
+    <script src="myapp.js"></script>
+</head>
+<body>
+    <div ng-controller="HomeController">
+        <!--the HomeController rules this area-->
+
+        <button ng-click="GetStudents()">get students</button>
+        <button ng-click="GetEducations()">get educations</button>
+
+        <button id="add-student-btn">add student</button>
+        <div id="add-student-div" style="display:none;">
+            <!-- the model attributes are used here to push
+                the values back into the controller so that
+                we can add the values into the array -->
+            <label>
+                student name:
+                <input type="text" ng-model="studentName" />
+            </label>
+            <label>student education:
+                <input type="text" ng-model="studentEducation" />
+            </label>
+            <button ng-click="AddStudent()">Add student to database</button>
+        </div>
+        <script>
+            //when button is clicked, div for entering student info is displayed
+            document.getElementById("add-student-btn").addEventListener("click", function () {
+                var div = document.getElementById("add-student-div");
+                div.style.display = "block";
+            })
+        </script>
+
+
+        <h2>students</h2>
+        <ul id="students-list">
+            <li ng-repeat="student in students">
+                {{student.studentName}}, {{student.education}}
+            </li>
+        </ul>
+
+        <h2>educations</h2>
+        <ul id="educations-list">
+            <li ng-repeat="education in educations">
+                {{education.educationName}}
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+</html>
