@@ -28,6 +28,9 @@ var HomeController = function ($scope, educationFactory) {
     $scope.SearchForStudents = function () {
         console.log($scope.searchedTerm);
         $scope.FoundStudents = educationFactory.searchForStudent($scope.searchedTerm);
+
+        //most recent search results is saved in localstorage
+        localStorage.setItem("MostRecentSearchResults", $scope.FoundStudents);
     };
 
 }
