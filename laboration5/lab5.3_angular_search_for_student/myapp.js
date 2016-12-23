@@ -27,8 +27,9 @@ var HomeController = function ($scope, educationFactory) {
 
     $scope.SearchForStudents = function () {
         console.log($scope.searchedTerm);
-        $scope.FoundStudent = educationFactory.searchForStudent($scope.searchedTerm);
+        $scope.FoundStudents = educationFactory.searchForStudent($scope.searchedTerm);
     };
+
 }
 
 //creating angular factory for the module
@@ -73,14 +74,18 @@ app.factory("educationFactory", function () {
     }
 
     myFactory.searchForStudent = function (searched) {
+        var result = [];
+
         console.log("inside factory searchforstudent method");
         console.log("searched parameter inside factory is: " + searched);
         for (var i = 0; i < students.length; i++) {
-            if (students[i].studentName == searched) {
+            console.log(students[i].studentName);
+            if (students[i].studentName == searched || students[i].education === searched) {
                 console.log("student retrieved back was :"+students[i]);
-                return students[i];
+                result.push(students[i]);
             }
         }
+        return result;
     }
 
     //returning the factory that contains all teh factory related stuff

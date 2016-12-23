@@ -57,11 +57,15 @@
             <h4>search for a student</h4>
             <input type="text" ng-model="searchedTerm" autofocus placeholder="search for a student" />
             <button ng-click="SearchForStudents()">Search for {{searchedTerm}}</button>
-            <div ng-show="FoundStudent"> 
+            <!--<div ng-show="FoundStudent"> 
                 Student Found: <br />
                 {{FoundStudent.studentName}} - {{FoundStudent.education}}
-            </div>
-
+            </div>-->
+            <ul id="list-found-students">
+                <li ng-repeat="student in FoundStudents">
+                    {{student.studentName}}, {{student.education}}
+                </li>
+            </ul>
         </section>
 
         <section>
