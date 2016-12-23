@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="angular.min.js"></script>
+    <script src="myapp.js"></script>
+</head>
+<body>
+    <!--
+        Man ska kunna söka efter en student
+        Skapa ett input-element där man kan söka efter en student på namn.
+        Det ska finnas en knapp som heter ”Sök” Resultatet ska visas i en div
+        med hjälp av en Angular repeater. Det ska finnas en ruta där man kan filtrera
+        bland de hittade studenterna. -->
+    <!--
+        Den senaste sökningen ska lagras i LocalStorage.
+        Lägg till en knapp som heter Repeat last Search som fyller i
+        värdet av den senaste  sökningen i sökrutan.  -->
+
+
+    <div ng-controller="HomeController">
+        <!--the HomeController rules this area-->
+        <section id="get-data-section">
+            <button ng-click="GetStudents()">get students</button>
+            <button ng-click="GetEducations()">get educations</button>
+        </section>
+
+        <section id="add-student-section">
+            <button id="add-student-btn">add student</button>
+            <div id="add-student-div" style="display:none;">
+                <!-- the model attributes are used here to push
+                    the values back into the controller so that
+                    we can add the values into the array -->
+                <label>
+                    student name:
+                    <input type="text" ng-model="studentName" />
+                </label>
+                <label>
+                    student education:
+                    <input type="text" ng-model="studentEducation" />
+                </label>
+                <button ng-click="AddStudent()">Add student to database</button>
+            </div>
+            <script>
+                //when button is clicked, div for entering student info is displayed
+                document.getElementById("add-student-btn").addEventListener("click", function () {
+                    var div = document.getElementById("add-student-div");
+                    div.style.display = "block";
+                })
+            </script>
+        </section>
+
+
+        <h2>students</h2>
+        <section>
+            <h4>search for a student</h4>
+            <input type="text" ng-model="searchedStudentName" placeholder="search for a student" />
+            <button ng-click="SearchForStudent()">Search for {{searchedStudentName}}</button>
+            <div ng-show="FoundStudent"> <!--ng-show will only show content if FoundStudent is not null-->
+                Student Found: <br />
+                {{FoundStudent.studentName}} - {{FoundStudent.education}}
+            </div>
+        </section>
+
+        <section>
+            <h4>all registered students</h4>
+            <ul id="students-list">
+                <li ng-repeat="student in students">
+                    {{student.studentName}}, {{student.education}}
+                </li>
+            </ul>
+        </section>
+
+        <h2>educations</h2>
+        <section>
+            <ul id="educations-list">
+                <li ng-repeat="education in educations">
+                    {{education.educationName}}
+                </li>
+            </ul>
+        </section>
+    </div>
+
+
+</body>
+</html>
