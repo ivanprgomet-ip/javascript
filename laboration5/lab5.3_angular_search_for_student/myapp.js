@@ -31,7 +31,13 @@ var HomeController = function ($scope, educationFactory) {
 
         //most recent search results is saved in localstorage
         localStorage.setItem("MostRecentSearchResults", $scope.FoundStudents);
+        localStorage.setItem("MostRecentSearchTerm", $scope.searchedTerm);
     };
+
+    $scope.PopulateInputWithRecentSearch = function () {
+        var mostRecentSearch = localStorage.getItem("MostRecentSearchTerm");
+        $scope.searchedTerm = mostRecentSearch;
+    }
 
 }
 
