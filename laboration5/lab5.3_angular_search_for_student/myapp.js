@@ -25,9 +25,9 @@ var HomeController = function ($scope, educationFactory) {
         });
     }
 
-    $scope.SearchForStudent = function () {
-        console.log($scope.searchedStudentName);
-        $scope.FoundStudent = educationFactory.searchForStudent($scope.searchedStudentName);
+    $scope.SearchForStudents = function () {
+        console.log($scope.searchedTerm);
+        $scope.FoundStudent = educationFactory.searchForStudent($scope.searchedTerm);
     };
 }
 

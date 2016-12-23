@@ -55,12 +55,13 @@
         <h2>students</h2>
         <section>
             <h4>search for a student</h4>
-            <input type="text" ng-model="searchedStudentName" placeholder="search for a student" />
-            <button ng-click="SearchForStudent()">Search for {{searchedStudentName}}</button>
-            <div ng-show="FoundStudent"> <!--ng-show will only show content if FoundStudent is not null-->
+            <input type="text" ng-model="searchedTerm" autofocus placeholder="search for a student" />
+            <button ng-click="SearchForStudents()">Search for {{searchedTerm}}</button>
+            <div ng-show="FoundStudent"> 
                 Student Found: <br />
                 {{FoundStudent.studentName}} - {{FoundStudent.education}}
             </div>
+
         </section>
 
         <section>
