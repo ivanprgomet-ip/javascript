@@ -4,6 +4,23 @@ var app = angular.module("moviesApp", []);
 var homecontroller = function ($scope,moviesFactory) {
     $scope.hero = "welcome to showtime movies"
     $scope.movies = moviesFactory.movies;
+
+    $scope.SearchMovies = function SearchMovies() {
+        var foundMovies = [];
+        for (var i = 0; i < moviesFactory.movies.length; i++) {
+            if(moviesFactory.movies[i].title == $scope.searchTerm) {
+                foundMovies.push(moviesFactory.movies[i]);
+            }
+        }
+        $scope.filteredMovies = foundMovies;
+    }
+
+
+    
+
+    $scope.searchResults = function () {
+
+    }
 }
 
 app.factory("moviesFactory", function () {
