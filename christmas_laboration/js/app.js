@@ -1,4 +1,5 @@
-﻿/// <reference path="angular.min.js" />
+﻿/// <reference path="jquery-3.1.1.min.js" />
+/// <reference path="angular.min.js" />
 
 var app = angular.module("moviesApp", []);
 var homecontroller = function ($scope, moviesFactory) {
@@ -14,9 +15,8 @@ var homecontroller = function ($scope, moviesFactory) {
         }
         $scope.filteredMovies = foundMovies;
     }
-    $scope.searchResults = function () {
 
-    }
+    $scope.loggedInUser = localStorage.getItem("loggedInUser");
 }
 
 var logincontroller = function ($scope, moviesFactory) {
@@ -33,15 +33,20 @@ var logincontroller = function ($scope, moviesFactory) {
         for (var i = 0; i < users.length; i++) {
             if (users[i].username == username && users[i].password == password) {
                 userFound = true;
+                localStorage.setItem("loggedInUser",users[i].username)
                 break;
             }
         }
+
         if (userFound) {
-            $scope.authenticationResult = "Successfull Login";
-            $scope.moviesUrl = "http://localhost:5006/christmas_laboration/index.html";
+            $scope.authenticationResult =
+                "Successfull Login";
+            $scope.moviesUrl =
+                "http://localhost:5006/christmas_laboration/index.html";
         }
         else {
-            $scope.authenticationResult = "The combination of user and password did not match. Please try again!<br/>";
+            $scope.authenticationResult =
+                "The combination of user and password did not match. Please try again!";
         }
     }
 
