@@ -9,18 +9,11 @@
 <body ng-app="moviesApp">
     <div ng-controller="homecontroller">
         <p>Logged in as {{username}}</p>
+        <a href="html/login.html">login</a>
         <br />
         <input type="text" ng-model="searchTerm" />
-        <button ng-click="SearchMovies()">Search</button>
-        <br />
-        <b>Searched movies</b>
-        <div ng-repeat="movie in filteredMovies">
-            {{movie.title}} ({{movie.year}})<br />
-        </div>
-
         <hr />
-        <b>all movies</b>
-        <div ng-repeat="movie in movies">
+        <div ng-repeat="movie in movies | filter:searchTerm | orderBy: 'title'">
             {{movie.title}} ({{movie.year}})<br />
         </div>
     </div>

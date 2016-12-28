@@ -16,7 +16,7 @@ var homecontroller = function ($scope, moviesFactory) {
         $scope.filteredMovies = foundMovies;
     }
 
-    $scope.username = localStorage.getItem("username");
+    $scope.username = localStorage.getItem("username");//used in index.html
 }
 
 var logincontroller = function ($scope, moviesFactory) {
@@ -33,7 +33,21 @@ var logincontroller = function ($scope, moviesFactory) {
         for (var i = 0; i < users.length; i++) {
             if (users[i].username == username && users[i].password == password) {
                 userFound = true;
-                localStorage.setItem("username",users[i].username)
+                localStorage.setItem("username", users[i].username)
+                console.log("username saved to localstorage")
+
+                //if user still wants to be remembered
+                if (document.getElementById("remember-me").checked)
+                {
+                    console.log("userWantsToBeRemembered set to true")
+                    localStorage.setItem("userWantsToBeRemembered", true);
+                    localStorage.setItem("username", users[i].username);
+                    localStorage.setItem("password", users[i].password);
+                }
+                else {
+                    localStorage.setItem("userWantsToBeRemembered", false);
+                    console.log("userWantsToBeRemembered set to false")
+                }
                 break;
             }
         }
@@ -49,8 +63,15 @@ var logincontroller = function ($scope, moviesFactory) {
                 "The combination of user and password did not match. Please try again!";
         }
     }
-
+    
     var users = moviesFactory.users;
+
+    function PopulateInputs() {
+        var inputs = document.getElementsByTagName("input");
+        $scope.loginUsername = localStorage.getItem("username");
+        $scope.loginPassword = localStorage.getItem("password");
+        $scope.loginRememberMe= true;
+    }
 }
 
 //factory
@@ -84,6 +105,3 @@ app.factory("moviesFactory", function () {
 //register controllers
 app.controller("homecontroller", homecontroller);
 app.controller("logincontroller", logincontroller);
-
-
-
