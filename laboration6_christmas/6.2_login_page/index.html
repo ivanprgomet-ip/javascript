@@ -8,6 +8,8 @@
 </head>
 <body ng-app="moviesApp">
     <div ng-controller="homecontroller">
+        <small>logged in as {{getCurrentUser()}}</small>
+        <br />
         <input type="text" ng-model="searchTerm" />
         <hr />
         <div ng-repeat="movie in movies | filter:searchTerm | orderBy: 'title'">
