@@ -1,28 +1,54 @@
 ﻿/// <reference path="angular.min.js" />
 
 var app = angular.module("moviesApp", []);
-var homecontroller = function ($scope,moviesFactory) {
+var homecontroller = function ($scope, moviesFactory) {
     $scope.hero = "welcome to showtime movies"
     $scope.movies = moviesFactory.movies;
 
     $scope.SearchMovies = function SearchMovies() {
         var foundMovies = [];
         for (var i = 0; i < moviesFactory.movies.length; i++) {
-            if(moviesFactory.movies[i].title == $scope.searchTerm) {
+            if (moviesFactory.movies[i].title == $scope.searchTerm) {
                 foundMovies.push(moviesFactory.movies[i]);
             }
         }
         $scope.filteredMovies = foundMovies;
     }
-
-
-    
-
     $scope.searchResults = function () {
 
     }
 }
 
+var logincontroller = function ($scope, moviesFactory) {
+    $scope.authenticate = function Authenticate() {
+        $scope.authenticationResult = "";//reset
+        $scope.moviesUrl = "";//reset
+
+        var userFound = false;
+        var username = $scope.loginUsername;
+        var password = $scope.loginPassword;
+        var rememberMe = $scope.loginRememberMe;
+
+
+        for (var i = 0; i < users.length; i++) {
+            if (users[i].username == username && users[i].password == password) {
+                userFound = true;
+                break;
+            }
+        }
+        if (userFound) {
+            $scope.authenticationResult = "Successfull Login";
+            $scope.moviesUrl = "http://localhost:5006/christmas_laboration/index.html";
+        }
+        else {
+            $scope.authenticationResult = "The combination of user and password did not match. Please try again!<br/>";
+        }
+    }
+
+    var users = moviesFactory.users;
+}
+
+//factory
 app.factory("moviesFactory", function () {
     //factory content
     var myFactory = {};
@@ -50,6 +76,6 @@ app.factory("moviesFactory", function () {
     return myFactory;
 })
 
-app.controller("homecontroller", homecontroller);//register controller
-
-
+//register controllers
+app.controller("homecontroller", homecontroller);
+app.controller("logincontroller", logincontroller);
