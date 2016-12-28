@@ -33,6 +33,5 @@ function onRememberMeChecked() {
     inputs[2].checked = true;
 }
 function onRememberMeUnchecked() {
-    var inputs = document.getElementsByTagName("input");
-    inputs[2].checked = false;
+    localStorage.clear();
 }

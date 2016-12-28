@@ -1,26 +1,14 @@
-﻿/// <reference path="jquery-3.1.1.min.js" />
-/// <reference path="angular.min.js" />
+﻿/// <reference path="angular.min.js" />
 
 var app = angular.module("moviesApp", []);
 var homecontroller = function ($scope, moviesFactory) {
-    $scope.hero = "welcome to showtime movies"
     $scope.movies = moviesFactory.movies;
 
-    $scope.SearchMovies = function SearchMovies() {
-        var foundMovies = [];
-        for (var i = 0; i < moviesFactory.movies.length; i++) {
-            if (moviesFactory.movies[i].title == $scope.searchTerm) {
-                foundMovies.push(moviesFactory.movies[i]);
-            }
-        }
-        $scope.filteredMovies = foundMovies;
-    }
-
-    $scope.username = localStorage.getItem("username");//used in index.html
+    $scope.username = localStorage.getItem("username");
 }
 
 var logincontroller = function ($scope, moviesFactory) {
-    $scope.authenticate = function Authenticate() {
+    $scope.authenticate = function authenticate() {
         $scope.authenticationResult = "";//reset
         $scope.moviesUrl = "";//reset
 

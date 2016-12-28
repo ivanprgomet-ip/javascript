@@ -13,21 +13,25 @@
         <form id="login-form">
             <label>
                 username:
-                <input type="text" id="username" placeholder="username" autofocus ng-model="loginUsername"/>
+                <input type="text" id="username" placeholder="username" autofocus ng-model="loginUsername" />
             </label>
             <label>
                 password
-                <input type="password" id="password" placeholder="password" ng-model="loginPassword"/>
+                <input type="password" id="password" placeholder="password" ng-model="loginPassword" />
             </label>
             <label>
                 remember me
-                <input type="checkbox" id="remember-me" ng-model="loginRememberMe"/>
+                <input type="checkbox" id="remember-me" ng-model="loginRememberMe" />
             </label>
             <button id="login" ng-click="authenticate()">login</button>
         </form>
         <div>
-            {{authenticationResult}}
-            <a href="{{moviesUrl}}">{{moviesUrl}}</a>
+            <p>
+                {{authenticationResult}}
+            </p>
+            <p>
+                <a href="{{moviesUrl}}">{{moviesUrl}}</a>
+            </p>
         </div>
     </div>
 </body>
