@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <meta charset="utf-8" />
+    <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+<body ng-app="moviesApp">
+    <div ng-controller="homecontroller">
+        <input type="text" ng-model="searchTerm" />
+        <hr />
+        <div ng-repeat="movie in movies | filter:searchTerm | orderBy: 'title'">
+            {{movie.title}} ({{movie.year}})<br />
+        </div>
+    </div>
+</body>
+</html>
