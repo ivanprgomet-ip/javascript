@@ -16,7 +16,7 @@ var homecontroller = function ($scope, moviesFactory) {
         $scope.filteredMovies = foundMovies;
     }
 
-    $scope.loggedInUser = localStorage.getItem("loggedInUser");
+    $scope.username = localStorage.getItem("username");
 }
 
 var logincontroller = function ($scope, moviesFactory) {
@@ -33,7 +33,7 @@ var logincontroller = function ($scope, moviesFactory) {
         for (var i = 0; i < users.length; i++) {
             if (users[i].username == username && users[i].password == password) {
                 userFound = true;
-                localStorage.setItem("loggedInUser",users[i].username)
+                localStorage.setItem("username",users[i].username)
                 break;
             }
         }
@@ -84,3 +84,6 @@ app.factory("moviesFactory", function () {
 //register controllers
 app.controller("homecontroller", homecontroller);
 app.controller("logincontroller", logincontroller);
+
+
+
