@@ -18,7 +18,8 @@ app.config(function ($routeProvider) {
         .when("/pears", { template: "pears are the cousins of apples" })
         .when("/pineapples", { template: "pineapples are the exact same as apples, but with a pine in the name" })
         .when("/coconuts", { template: "coconuts are nuts inlove with the coco" })
-
-        .otherwise({redirectTo:"/"})
+        .otherwise({
+            redirectTo: '/'
+        })
 })
 
