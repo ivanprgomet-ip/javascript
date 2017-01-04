@@ -13,21 +13,22 @@ app.config(function ($routeProvider) {
 app.factory("seminarFactory", function () {
     var myFactory = {}
 
-    var seminars = []
+    var seminar = {}
     var users = []
 
-    myFactory.addSeminar = function (name, date) {
-        seminars.push({ seminarName: name, seminarDate: date })
+    myFactory.setSeminar = function (name, date) {
+        seminar = { seminarName: name, seminarDate: date };
     }
+    myFactory.getSeminar = function () {
+        return seminar;
+    }
+
     myFactory.addUser = function (name, mobile) {
-        seminars.push({ userName: name, userMobile: mobile })
+        users.push({ userName: name, userMobile: mobile })
     }
 
     myFactory.getUsers = function () {
         return users;
-    }
-    myFactory.getSeminars = function () {
-        return seminars;
     }
 
 
@@ -35,21 +36,17 @@ app.factory("seminarFactory", function () {
 })
 
 var controllers = {}
-controllers.HomeController = function ($scope) {
-    //CONTENT FOR HOMECONTROLLER
-}
 controllers.RegistrationController = function ($scope, seminarFactory) {
 
-    //add a seminar to factory
-    $scope.addSeminar = function () {
-        if ($scope.seminarName == undefined && $scope.seminarDate == undefined) {
-            $scope.validationMsg = "you havent filled in all required info";
-        }
-        else {
-            seminarFactory.addSeminar($scope.seminarName, $scope.seminarDate);
-            window.location.href = "#/partial3"
-        }
+    //$scope.seminarName = "seminarName";
+    //$scope.seminarDate = Date();
+
+    $scope.setSeminar = function () {
+        seminarFactory.setSeminar($scope.seminarName, $scope.seminarDate);
+        location.href = "#/partial3";
     }
+
+
     //add a user to factory
     $scope.addUser = function () {
         if ($scope.userName == undefined && $scope.userMobile == undefined) {
@@ -60,12 +57,12 @@ controllers.RegistrationController = function ($scope, seminarFactory) {
         }
     }
 
-    $scope.retrievedUsers = function () {
-        return seminarFactory.getUsers()
-    }
-    $scope.retrievedSeminars = function () {
-        return seminarFactory.getSeminars()
-    }
+    //THESE ALLWAYS RUN FOR THE CONTROLLER
+    $scope.seminarName = seminarFactory.getSeminar().seminarName;
+    $scope.seminarDate = seminarFactory.getSeminar().seminarDate;
+
+    $scope.retrievedUsers = seminarFactory.getUsers();
+    console.log($scope.retrievedUsers)
 }
 
 app.controller(controllers)

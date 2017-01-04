@@ -1,15 +1,20 @@
 ﻿<div ng-controller="RegistrationController">
-    <h1>welcome to page 2 this heading is temporary</h1>
-    <form id="page2form">
-        <label for="seminarname">seminar name:</label>
+    <h1>Register seminar</h1>
+    <label>
+        seminar name:
         <input type="text" id="seminarname" ng-model="seminarName" />
-        <label for="seminardate">seminar date:</label>
-        <input type="date" id="seminardate" ng-model="seminarDate" />
+    </label>
 
-        <button ng-click="addSeminar()">Submit</button>
-    </form>
+    <label>
+        seminar date:
+        <input type="date" id="seminardate" ng-model="seminarDate" />
+    </label>
+
+    <button ng-click="setSeminar()">Submit</button>
+
     <div>
         {{validationMsg}}
     </div>
 </div>
+
 

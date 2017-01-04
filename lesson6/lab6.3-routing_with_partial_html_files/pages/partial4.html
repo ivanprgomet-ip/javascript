@@ -1,14 +1,11 @@
-﻿
-<div ng-controller="RegistrationController">
+﻿<div ng-controller="RegistrationController">
     <h1>All seminars and attendees</h1>
 
-    <div ng-repeat="seminar in retrievedSeminars">
-        <h2>{{seminarName}} - {{seminarDate}}</h2>
-    </div>
-
+    <h2>{{seminarName}}</h2>
+    <h4>{{seminarDate}}</h4>
+    <hr />
     <div ng-repeat="user in retrievedUsers">
-        <h4>{{userName}} - {{userMobile}}</h4>
+        <p><b>attendant:</b>{{user.userName}} - <b>attendant phone:</b>{{user.userMobile}}</p>
     </div>
-
 </div>
 
