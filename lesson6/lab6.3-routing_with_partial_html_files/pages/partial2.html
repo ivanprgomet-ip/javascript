@@ -1,0 +1,15 @@
+﻿<div ng-controller="RegistrationController">
+    <h1>welcome to page 2 this heading is temporary</h1>
+    <form id="page2form">
+        <label for="seminarname">seminar name:</label>
+        <input type="text" id="seminarname" ng-model="seminarName" />
+        <label for="seminardate">seminar date:</label>
+        <input type="date" id="seminardate" ng-model="seminarDate" />
+
+        <button ng-click="addSeminar()">Submit</button>
+    </form>
+    <div>
+        {{validationMsg}}
+    </div>
+</div>
+

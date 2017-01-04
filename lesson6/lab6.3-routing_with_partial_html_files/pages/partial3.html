@@ -1,0 +1,15 @@
+﻿
+<div ng-controller="RegistrationController">
+
+    <form id="page3form">
+        <label for="name">name:</label>
+        <input type="text" id="name" />
+        <label for="mobile">mobile:</label>
+        <input type="text" id="mobile" />
+    </form>
+    {{validationMsg}}
+    <a href="#/partial3" ng-click="addUser()" onclick="alert('user added')">register another user</a>
+    <a href="#/partial4" ng-click="addUser()">registration completed</a>
+</div>
+
+

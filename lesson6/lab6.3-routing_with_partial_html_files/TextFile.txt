@@ -1,0 +1,7 @@
+﻿# SPA
+	a single page application (SPA) is a webapplication that 
+	only loads ONE html file and then changes the contents of this 
+	page dynamically.
+
+
+
