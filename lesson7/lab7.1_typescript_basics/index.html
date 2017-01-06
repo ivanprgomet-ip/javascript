@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>CurrencyConverter</title>
+    <meta charset="utf-8" />
+    <script src="scripts/converter.js"></script>
+</head>
+<body>
+    <h2>Currency Converter</h2>
+
+    <section id="conversion-panel">
+        <label>
+            Sek:<br />
+            <input type="text" id="swe-currency" />
+        </label>
+        <br />
+        <label>
+            Euro:<br />
+            <input type="text" id="eur-currency" />
+        </label>
+        <br />
+        <br />
+        <button id="btn-eur-to-sek" onclick="EuroToSek()">Euro To Sek</button>
+        <button id="btn-sek-to-eur" onclick="SekToEuro()">Sek To Euro</button>
+    </section>
+
+    <section id="result"></section>
+</body>
+</html>

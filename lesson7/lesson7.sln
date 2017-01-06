@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab7.2_typescript_classes_and_inheritance", "lab7.2_typescript_classes_and_inheritance\lab7.2_typescript_classes_and_inheritance.csproj", "{8637DE8F-1E9D-442F-8E44-D91AA13CFA75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab7.1_typescript_basics", "lab7.1_typescript_basics\lab7.1_typescript_basics.csproj", "{7DA864B8-86EE-4993-AF9A-83EE162E07E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8637DE8F-1E9D-442F-8E44-D91AA13CFA75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8637DE8F-1E9D-442F-8E44-D91AA13CFA75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8637DE8F-1E9D-442F-8E44-D91AA13CFA75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8637DE8F-1E9D-442F-8E44-D91AA13CFA75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DA864B8-86EE-4993-AF9A-83EE162E07E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DA864B8-86EE-4993-AF9A-83EE162E07E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DA864B8-86EE-4993-AF9A-83EE162E07E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DA864B8-86EE-4993-AF9A-83EE162E07E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
