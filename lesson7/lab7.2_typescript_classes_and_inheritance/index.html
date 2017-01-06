@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="scripts/webshop.js"></script>
+</head>
+<body>
+    <div>
+        <button id="btn-list-all">list all products</button>
+        <div id="result-list-all">
+            <!-- all products -->
+        </div>
+    </div>
+    <div>
+        <button id="btn-list-books">list all books</button>
+        <div id="result-list-books">
+            <!--all books-->
+        </div>
+    </div>
+    <div>
+
+        <button id="btn-list-all">list all products</button>
+        <div>
+
+        </div>
+    </div>
+
+
+    <script>
+        // self executing function here (iife)
+        (function () {
+            // your page initialization code here
+            // the DOM will be available here
+
+            console.log("iife 2 done");
+            //attaching event listener to buttons at the end when the dom is ready
+            document.getElementById("btn-list-all").addEventListener("click", ListAllProducts, false);
+            document.getElementById("btn-list-books").addEventListener("click", ListAllBooks, false);
+
+        })();
+    </script>
+</body>
+</html>

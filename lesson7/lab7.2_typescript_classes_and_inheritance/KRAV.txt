@@ -1,0 +1,22 @@
+﻿2.1 Du ska nu börja skriva grundläggande logiken för en webbshop.
+
+2.2 Det ska finnas minst 3 kategorier av produkter. (Book, DVD, Game). Varje typ av
+produkt ska ha en egen klass.
+Det ska finnas en basklass som heter Product med egenskaperna Name, Category,
+Price och ArticelNumber.
+De andra klasserna ska ärva från denna klass.
+Lägg till lämpliga egenskaper beroende på produktkategori men minst
+
+2.3 Varje produktkategori ska ha en egen Array för att hålla dessa.
+
+2.2 Det ska finnas 3 knappar.
+
+2.3 Knapp 1: lista alla produkter. Den här knappen ska lista alla produkter i en div. Visa
+här endast upp Name, Category, Price och ArticelNumber
+
+2.4 Knapp 2: lista alla produkter av typen Book. Den ska visa upp egenskaperna Name,
+Price och ArticelNumber, Writer, Year
+
+2.5 Knapp 3: lägga till en ny produkt. Knappen ska visa upp ett formulär där man kan
+lägga till en ny bok. Formuläret ska ligga in en gömd div som blir synlig när man
+trycker på knappen
