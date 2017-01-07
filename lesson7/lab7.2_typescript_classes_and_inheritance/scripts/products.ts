@@ -101,7 +101,6 @@ class Game extends Product {
 //CLASSES ---END
 
 var HomeController = app.controller("HomeController", function ($scope) {//using homecontroller
-
     $scope.ShowBooks = function () {
         $scope.retrieved = function () {
             var retrievedProducts: Product[] = [];
@@ -113,7 +112,23 @@ var HomeController = app.controller("HomeController", function ($scope) {//using
             return retrievedProducts;
         } ();//immediately run this method (iief)
     };
-    $scope.ShowProducts
+    $scope.ShowProducts = function () {
+        $scope.retrieved = function () {
+            let retrievedProducts: Array<Product> = [];
+
+            for (var book of Product.books) {
+                retrievedProducts.push(book);
+            }
+            for (var game of Product.games) {
+                retrievedProducts.push(game);
+            }
+            for (var dvd of Product.dvds) {
+                retrievedProducts.push(dvd);
+            }
+
+            return retrievedProducts;
+        } ();//immediately run this method (iief)
+    };
 });
 
 

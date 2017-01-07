@@ -103,7 +103,24 @@ var HomeController = app.controller("HomeController", function ($scope) {
             return retrievedProducts;
         }(); //immediately run this method (iief)
     };
-    $scope.ShowProducts;
+    $scope.ShowProducts = function () {
+        $scope.retrieved = function () {
+            var retrievedProducts = [];
+            for (var _i = 0, _a = Product.books; _i < _a.length; _i++) {
+                var book = _a[_i];
+                retrievedProducts.push(book);
+            }
+            for (var _b = 0, _c = Product.games; _b < _c.length; _b++) {
+                var game = _c[_b];
+                retrievedProducts.push(game);
+            }
+            for (var _d = 0, _e = Product.dvds; _d < _e.length; _d++) {
+                var dvd = _e[_d];
+                retrievedProducts.push(dvd);
+            }
+            return retrievedProducts;
+        }(); //immediately run this method (iief)
+    };
 });
 window.onload = function () {
     //seed some defautl products into arrays
