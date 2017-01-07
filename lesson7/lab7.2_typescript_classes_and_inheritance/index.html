@@ -32,25 +32,25 @@
             <section id="buttons">
                 <button ng-click="ShowProducts()">Products</button>
                 <button ng-click="ShowBooks()">Books</button>
-                <button ng-click="AddBook()">New Book</button>
+                <button ng-click="ShowAddBookPanel()">New Book</button>
             </section>
-            <!--<section id="addbook-section">
+            <section id="panel-add-book">
                 <form>
                     <input type="text" name="name" placeholder="name" />
 
-                    <input type="text" name="author" placeholder="author" />
-
                     <input type="text" name="category" placeholder="category" />
-
-                    <input type="text" name="year" placeholder="year" />
-
-                    <input type="text" name="articlenumber" placeholder="articlenumber" />
 
                     <input type="text" name="price" placeholder="price" />
 
-                    <button id="btn-add-book">submit book</button>
+                    <input type="text" name="articlenumber" placeholder="articlenumber" />
+
+                    <input type="text" name="author" placeholder="author" />
+
+                    <input type="text" name="year" placeholder="year" />
+
+                    <button id="btn-add-book" ng-click="AddBook()">submit book</button>
                 </form>
-            </section>-->
+            </section>
             <section id="output">
                 <div ng-repeat="p in retrieved | orderBy:'Name'">
 

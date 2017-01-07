@@ -129,6 +129,17 @@ var HomeController = app.controller("HomeController", function ($scope) {//using
             return retrievedProducts;
         } ();//immediately run this method (iief)
     };
+
+    $scope.AddBook = function () {
+        var inputs = document.getElementsByTagName("form")[0].getElementsByTagName("input");
+        let newBook: Book = new Book(inputs[0].value, inputs[1].value,
+            parseInt(inputs[2].value), inputs[3].value,
+            inputs[4].value, inputs[5].value);
+
+        Product.books.push(newBook);
+        console.log(newBook);
+    }
+
 });
 
 
