@@ -6,23 +6,26 @@
     <script src="scripts/angular.min.js"></script>
     <script src="scripts/products.js"></script>
     <style>
-        *{
-            font-size:14px;
-            font-family:'Tempus Sans ITC';
+        * {
+            font-size: 14px;
+            font-family: 'Tempus Sans ITC';
         }
-        form{
-            display:flex;
-            flex-direction:column;
-            width:220px;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 220px;
         }
-        form input{
-            margin-top:10px;
-            margin-bottom:5px;
-            padding:5px;
-        }
-        button{
-            background-color:lightsteelblue;
-            padding:5px;
+
+            form input {
+                margin-top: 10px;
+                margin-bottom: 5px;
+                padding: 5px;
+            }
+
+        button {
+            background-color: lightsteelblue;
+            padding: 5px;
         }
     </style>
 </head>
@@ -32,9 +35,9 @@
             <section id="buttons">
                 <button ng-click="ShowProducts()">Products</button>
                 <button ng-click="ShowBooks()">Books</button>
-                <button ng-click="ShowAddBookPanel()">New Book</button>
+                <button ng-click="showPanel = ! showPanel">New Book</button>
             </section>
-            <section id="panel-add-book">
+            <section ng-show="showPanel">
                 <form>
                     <input type="text" name="name" placeholder="name" />
 

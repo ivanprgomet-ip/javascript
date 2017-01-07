@@ -137,7 +137,11 @@ var HomeController = app.controller("HomeController", function ($scope) {//using
             inputs[4].value, inputs[5].value);
 
         Product.books.push(newBook);
-        console.log(newBook);
+
+        //clear the input boxes after submitting new book
+        for (var input of inputs) {
+            input.value = "";
+        }
     }
 
 });
