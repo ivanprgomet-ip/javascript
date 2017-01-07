@@ -14,3 +14,4 @@ var CurrencyController = app.controller('CurrencyController', function ($scope) 
         return (Math.round(euroInput * 9.53713)).toString() + " sek";
     }
 });
+//# sourceMappingURL=converter.js.map

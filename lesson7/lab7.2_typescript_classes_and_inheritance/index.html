@@ -1,20 +1,73 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Home</title>
     <meta charset="utf-8" />
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/products.js"></script>
+    <style>
+        *{
+            font-size:14px;
+            font-family:'Tempus Sans ITC';
+        }
+        form{
+            display:flex;
+            flex-direction:column;
+            width:220px;
+        }
+        form input{
+            margin-top:10px;
+            margin-bottom:5px;
+            padding:5px;
+        }
+        button{
+            background-color:lightsteelblue;
+            padding:5px;
+        }
+    </style>
 </head>
 <body>
-    <div>
+    <div ng-app="productsApp">
+        <div ng-controller="HomeController">
+        <section id="buttons">
+            <button>Products</button>
+            <button>Books</button>
+            <button>New Book</button>
+        </section>
+        <section id="addbook-section">
+            <form>
+                <input type="text" name="name" placeholder="name" />
+
+                <input type="text" name="author" placeholder="author" />
+
+                <input type="text" name="category" placeholder="category" />
+
+                <input type="text" name="year" placeholder="year" />
+
+                <input type="text" name="articlenumber" placeholder="articlenumber" />
+
+                <input type="text" name="price" placeholder="price" />
+
+                <button id="btn-add-book">submit book</button>
+            </form>
+        </section>
+        <section id="output">
+            <div ng-repeat="product in retrieved">
+                <!-- shows whatever was returned into the retrieved array (all products or all books)-->
+            </div>
+        </section>
+    </div>
+    </div>
+    <!--<div>
         <button id="btn-list-all">list all products</button>
         <div id="result-list-all">
-            <!-- all products -->
+
         </div>
     </div>
     <div>
         <button id="btn-list-books">list all books</button>
         <div id="result-list-books">
-            <!--all books-->
+
         </div>
     </div>
     <div>
@@ -50,9 +103,7 @@
                 <button id="btn-add-book">submit book</button>
             </form>
         </div>
-    </div>
+    </div>-->
 
-    <script src="scripts/webshop.js"></script>
-    <script src="scripts/inits.js"></script>
 </body>
 </html>
