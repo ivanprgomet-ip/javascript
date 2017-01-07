@@ -118,6 +118,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="scripts\inits.ts" />
     <TypeScriptCompile Include="scripts\webshop.ts" />
   </ItemGroup>
   <ItemGroup>

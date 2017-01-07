@@ -3,27 +3,33 @@
 <head>
     <title>CurrencyConverter</title>
     <meta charset="utf-8" />
+    <script src="scripts/angular.min.js"></script>
     <script src="scripts/converter.js"></script>
 </head>
 <body>
-    <h2>Currency Converter</h2>
+    <div ng-app="currencyApp">
+        <h2>Currency Converter</h2>
+        <h4>made 2017/01/07 (all values rounded using javascript math round algorithm)</h4>
+        <h4>currenciy info taken from xe.com</h4>
 
-    <section id="conversion-panel">
-        <label>
-            Sek:<br />
-            <input type="text" id="swe-currency" />
-        </label>
-        <br />
-        <label>
-            Euro:<br />
-            <input type="text" id="eur-currency" />
-        </label>
-        <br />
-        <br />
-        <button id="btn-eur-to-sek" onclick="EuroToSek()">Euro To Sek</button>
-        <button id="btn-sek-to-eur" onclick="SekToEuro()">Sek To Euro</button>
-    </section>
+        <div ng-controller="CurrencyController">
+            <section>
+                <input type="number" placeholder="sek" ng-model="sek" />
+                <button id="btn-sek-to-euro" ng-click="sekToEuro()">to euro</button>
+                <span id="euro-result">
+                    <!-- euro to sek result -->
+                </span>
+            </section>
+            <section>
+                <input type="number" placeholder="euro" ng-model="euro"/>
+                <button id="btn-euro-to-sek" ng-click="euroToSek()">to sek</button>
+                <span id="sek-result">
+                    <!-- sek to euro result -->
+                </span>
+            </section>
+        </div>
+    </div>
 
-    <section id="result"></section>
+
 </body>
 </html>

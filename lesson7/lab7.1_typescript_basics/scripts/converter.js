@@ -1,22 +1,16 @@
-//1 euro = 9.56332175 sek
-//1 sek = 0.104566178 eur
-function EuroToSek() {
-    //get input value from input element
-    var eurInput = parseInt(document.getElementById("eur-currency").value);
-    //conversion
-    var sek = eurInput * 9.5633;
-    var sekString = eurInput + " euro(s) = " + sek + " sek";
-    document.getElementById("result").innerHTML = sekString;
-}
-function SekToEuro() {
-    //get input value from input element
-    var sekInput = parseInt(document.getElementById("swe-currency").value);
-    //conversion
-    var euros = sekInput * 0.1045;
-    var eurosString = sekInput + " sek = " + euros + " euro(s)";
-    document.getElementById("result").innerHTML = eurosString;
-}
-(function () {
-    console.log("this runs when everything has loaded");
-}());
-//# sourceMappingURL=converter.js.map
+var app = angular.module('currencyApp', []);
+app.controller("CurrencyController", CurrencyController); //register controller
+var CurrencyController = app.controller('CurrencyController', function ($scope) {
+    $scope.sekToEuro = function () {
+        document.getElementById("euro-result").innerHTML = SekToEuro($scope.sek);
+    };
+    function SekToEuro(sekInput) {
+        return (Math.round(sekInput * 0.104853)).toString() + " euro";
+    }
+    $scope.euroToSek = function () {
+        document.getElementById("sek-result").innerHTML = EuroToSek($scope.euro);
+    };
+    function EuroToSek(euroInput) {
+        return (Math.round(euroInput * 9.53713)).toString() + " sek";
+    }
+});

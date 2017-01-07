@@ -1,28 +1,21 @@
-﻿//1 euro = 9.56332175 sek
-//1 sek = 0.104566178 eur
+﻿declare var angular: any;
+let app = angular.module('currencyApp', []);
 
-function EuroToSek(): void {
-    //get input value from input element
-    let eurInput: number = parseInt((<HTMLInputElement>document.getElementById("eur-currency")).value);
+app.controller("CurrencyController", CurrencyController);//register controller
 
-    //conversion
-    let sek: number = eurInput * 9.5633;
-    let sekString: string = eurInput + " euro(s) = " + sek + " sek";
+var CurrencyController = app.controller('CurrencyController', function ($scope) {
 
-    document.getElementById("result").innerHTML = sekString;
-}
+    $scope.sekToEuro = function () {
+        document.getElementById("euro-result").innerHTML = SekToEuro($scope.sek);
+    };
+    function SekToEuro(sekInput: number): string {
+        return (Math.round(sekInput * 0.104853)).toString() + " euro";
+    }
 
-function SekToEuro(): void {
-    //get input value from input element
-    let sekInput: number = parseInt((<HTMLInputElement>document.getElementById("swe-currency")).value);
-
-    //conversion
-    let euros: number = sekInput * 0.1045;
-    let eurosString: string = sekInput + " sek = " + euros + " euro(s)";
-
-    document.getElementById("result").innerHTML = eurosString;
-}
-
-(function () {
-    console.log("this runs when everything has loaded");
-} ());
+    $scope.euroToSek= function () {
+        document.getElementById("sek-result").innerHTML = EuroToSek($scope.euro);
+    };
+    function EuroToSek(euroInput: number): string {
+        return (Math.round(euroInput * 9.53713)).toString() + " sek";
+    }
+});
