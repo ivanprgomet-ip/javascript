@@ -3,7 +3,6 @@
 <head>
     <title></title>
     <meta charset="utf-8" />
-    <script src="scripts/webshop.js"></script>
 </head>
 <body>
     <div>
@@ -20,25 +19,40 @@
     </div>
     <div>
 
-        <button id="btn-list-all">list all products</button>
-        <div>
-
+        <button id="btn-show-bookform">add book</button>
+        <div id="hidden-form-div">
+            <form id="bookform">
+                <br />
+                name:
+                <br />
+                <input type="text" name="name" />
+                <br />
+                author:
+                <br />
+                <input type="text" name="author" />
+                <br />
+                category:
+                <br />
+                <input type="text" name="category" />
+                <br />
+                year:
+                <br />
+                <input type="text" name="year" />
+                <br />
+                articlenumber:
+                <br />
+                <input type="text" name="articlenumber" />
+                <br />
+                price:
+                <br />
+                <input type="text" name="price" />
+                <br />
+                <button id="btn-add-book">submit book</button>
+            </form>
         </div>
     </div>
 
-
-    <script>
-        // self executing function here (iife)
-        (function () {
-            // your page initialization code here
-            // the DOM will be available here
-
-            console.log("iife 2 done");
-            //attaching event listener to buttons at the end when the dom is ready
-            document.getElementById("btn-list-all").addEventListener("click", ListAllProducts, false);
-            document.getElementById("btn-list-books").addEventListener("click", ListAllBooks, false);
-
-        })();
-    </script>
+    <script src="scripts/webshop.js"></script>
+    <script src="scripts/inits.js"></script>
 </body>
 </html>

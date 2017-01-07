@@ -1,5 +1,6 @@
 ﻿let products: Product[] = [];
 
+
 class Product {
     public Name: string;
     public Category: string;
@@ -44,6 +45,7 @@ function ListAllProducts(e): void {
 
     productListElem.innerHTML += "______START____<br/>";
     for (var val of products) {
+        productListElem.innerHTML += val.constructor.name + "<br/>"; //gets the classname (or producttype)
         productListElem.innerHTML += "name: " + val.Name + "<br/>";
         productListElem.innerHTML += "category: " + val.Category + "<br/>";
         productListElem.innerHTML += "price: " + val.Price + "<br/>";
@@ -59,6 +61,7 @@ function ListAllBooks(e): void {
     for (var val of products) {
         if (val instanceof Book)//if current instance is a book
         {
+            bookListElem.innerHTML += val.constructor.name + "<br/>"; //gets the classname (or producttype)
             bookListElem.innerHTML += "name: " + val.Name + "<br/>";
             bookListElem.innerHTML += "price: " + val.Price + "<br/>";
             bookListElem.innerHTML += "article number: " + val.ArticleNumber + "<br/>";
@@ -71,12 +74,12 @@ function ListAllBooks(e): void {
     bookListElem.innerHTML += "______END______<br/>";
 }
 
-
 (function () {
-    console.log("iife 1 done");
+    console.log("iife 1 done (products array seeding)");
 
     products.push(new Book("ivanhoe", "roman", 99, "jasf23489", "walter scott", "1820"));
     products.push(new Book("moby dick", "roman", 29, "shl29384", "herman melville", "2016"));
     products.push(new DVD("the girl on the train", "thriller/mystery", 129, "asdlf2394", 112));
     products.push(new Game("halo", "action/fantasy", 399, "akldöfh2398", true));
 })();
+

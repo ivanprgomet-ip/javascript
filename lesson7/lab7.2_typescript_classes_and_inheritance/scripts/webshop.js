@@ -43,6 +43,7 @@ function ListAllProducts(e) {
     productListElem.innerHTML += "______START____<br/>";
     for (var _i = 0; _i < products.length; _i++) {
         var val = products[_i];
+        productListElem.innerHTML += val.constructor.name + "<br/>"; //gets the classname (or producttype)
         productListElem.innerHTML += "name: " + val.Name + "<br/>";
         productListElem.innerHTML += "category: " + val.Category + "<br/>";
         productListElem.innerHTML += "price: " + val.Price + "<br/>";
@@ -57,6 +58,7 @@ function ListAllBooks(e) {
     for (var _i = 0; _i < products.length; _i++) {
         var val = products[_i];
         if (val instanceof Book) {
+            bookListElem.innerHTML += val.constructor.name + "<br/>"; //gets the classname (or producttype)
             bookListElem.innerHTML += "name: " + val.Name + "<br/>";
             bookListElem.innerHTML += "price: " + val.Price + "<br/>";
             bookListElem.innerHTML += "article number: " + val.ArticleNumber + "<br/>";
@@ -68,7 +70,7 @@ function ListAllBooks(e) {
     bookListElem.innerHTML += "______END______<br/>";
 }
 (function () {
-    console.log("iife 1 done");
+    console.log("iife 1 done (products array seeding)");
     products.push(new Book("ivanhoe", "roman", 99, "jasf23489", "walter scott", "1820"));
     products.push(new Book("moby dick", "roman", 29, "shl29384", "herman melville", "2016"));
     products.push(new DVD("the girl on the train", "thriller/mystery", 129, "asdlf2394", 112));
