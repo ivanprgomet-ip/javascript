@@ -29,34 +29,42 @@
 <body>
     <div ng-app="productsApp">
         <div ng-controller="HomeController">
-        <section id="buttons">
-            <button>Products</button>
-            <button>Books</button>
-            <button>New Book</button>
-        </section>
-        <section id="addbook-section">
-            <form>
-                <input type="text" name="name" placeholder="name" />
+            <section id="buttons">
+                <button ng-click="ShowProducts()">Products</button>
+                <button ng-click="ShowBooks()">Books</button>
+                <button ng-click="AddBook()">New Book</button>
+            </section>
+            <!--<section id="addbook-section">
+                <form>
+                    <input type="text" name="name" placeholder="name" />
 
-                <input type="text" name="author" placeholder="author" />
+                    <input type="text" name="author" placeholder="author" />
 
-                <input type="text" name="category" placeholder="category" />
+                    <input type="text" name="category" placeholder="category" />
 
-                <input type="text" name="year" placeholder="year" />
+                    <input type="text" name="year" placeholder="year" />
 
-                <input type="text" name="articlenumber" placeholder="articlenumber" />
+                    <input type="text" name="articlenumber" placeholder="articlenumber" />
 
-                <input type="text" name="price" placeholder="price" />
+                    <input type="text" name="price" placeholder="price" />
 
-                <button id="btn-add-book">submit book</button>
-            </form>
-        </section>
-        <section id="output">
-            <div ng-repeat="product in retrieved">
-                <!-- shows whatever was returned into the retrieved array (all products or all books)-->
-            </div>
-        </section>
-    </div>
+                    <button id="btn-add-book">submit book</button>
+                </form>
+            </section>-->
+            <section id="output">
+                <div ng-repeat="p in retrieved">
+
+                    <!-- shows whatever was returned into the
+                        retrieved array (all products or all books)-->
+                    <h4>{{p.Name}}</h4>
+                    {{p.Category}}
+                    {{p.Price}}
+                    {{p.ArticleNumber}}
+                    {{p.Author}}
+                    {{p.Year}}
+                </div>
+            </section>
+        </div>
     </div>
     <!--<div>
         <button id="btn-list-all">list all products</button>

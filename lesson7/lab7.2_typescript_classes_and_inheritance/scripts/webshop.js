@@ -71,4 +71,3 @@
 //    products.push(new DVD("the girl on the train", "thriller/mystery", 129, "asdlf2394", 112));
 //    products.push(new Game("halo", "action/fantasy", 399, "akldöfh2398", true));
 //})(); 
-//# sourceMappingURL=webshop.js.map
