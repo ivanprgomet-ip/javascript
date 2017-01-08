@@ -130,15 +130,18 @@ var HomeController = app.controller("HomeController", function ($scope) {//using
         } ();//immediately run this method (iief)
     };
 
-    $scope.AddBook = function () {
-        var inputs = document.getElementsByTagName("form")[0].getElementsByTagName("input");
-        let newBook: Book = new Book(inputs[0].value, inputs[1].value,
-            parseInt(inputs[2].value), inputs[3].value,
-            inputs[4].value, inputs[5].value);
+    $scope.SaveBook = function () {
+        let name: string = $scope.Name;
+
+        let newBook: Book = new Book($scope.Name, $scope.Category,
+            $scope.Price, $scope.ArticleNumber, $scope.Author, $scope.Year);
 
         Product.books.push(newBook);
 
+        console.log(newBook);
+
         //clear the input boxes after submitting new book
+        var inputs = document.getElementsByTagName("form")[0].getElementsByTagName("input");
         for (var input of inputs) {
             input.value = "";
         }

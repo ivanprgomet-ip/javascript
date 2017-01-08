@@ -39,19 +39,19 @@
             </section>
             <section ng-show="showPanel">
                 <form>
-                    <input type="text" name="name" placeholder="name" />
+                    <input type="text" name="name" ng-model="Name" placeholder="name" />
 
-                    <input type="text" name="category" placeholder="category" />
+                    <input type="text" name="category" ng-model="Category" placeholder="category" />
 
-                    <input type="text" name="price" placeholder="price" />
+                    <input type="number" name="price" ng-model="Price" placeholder="price" />
 
-                    <input type="text" name="articlenumber" placeholder="articlenumber" />
+                    <input type="text" name="articlenumber" ng-model="ArticleNumber" placeholder="articlenumber" />
 
-                    <input type="text" name="author" placeholder="author" />
+                    <input type="text" name="author" ng-model="Author" placeholder="author" />
 
-                    <input type="text" name="year" placeholder="year" />
+                    <input type="text" name="year" ng-model="Year" placeholder="year" />
 
-                    <button id="btn-add-book" ng-click="AddBook()">submit book</button>
+                    <button id="btn-add-book" ng-click="SaveBook()">submit book</button>
                 </form>
             </section>
             <section id="output">
