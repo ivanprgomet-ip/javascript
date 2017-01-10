@@ -1,9 +1,9 @@
 ﻿var persons = [
-        { firstname: "ivan", lastname: "prgomet", age: 24, city: "lund", fullname: function () { return this.firstname + " " + this.lastname } },
-        { firstname: "leo", lastname: "capello", age: 34, city: "napoli", fullname: function () { return this.firstname + " " + this.lastname } },
-        { firstname: "abrahamn", lastname: "morcini", age: 25, city: "napoli", fullname: function () { return this.firstname + " " + this.lastname } },
-        { firstname: "sid", lastname: "versace", age: 62, city: "milan", fullname: function () { return this.firstname + " " + this.lastname } },
-        { firstname: "ronnie", lastname: "bagliatello", age: 55, city: "cannes", fullname: function () { return this.firstname + " " + this.lastname } }, ]
+       { firstname: "ivan", lastname: "prgomet", age: 24, city: "lund", fullname: function () { return this.firstname + " " + this.lastname } },
+       { firstname: "leo", lastname: "capello", age: 34, city: "napoli", fullname: function () { return this.firstname + " " + this.lastname } },
+       { firstname: "abrahamn", lastname: "morcini", age: 25, city: "napoli", fullname: function () { return this.firstname + " " + this.lastname } },
+       { firstname: "sid", lastname: "versace", age: 62, city: "milan", fullname: function () { return this.firstname + " " + this.lastname } },
+       { firstname: "ronnie", lastname: "bagliatello", age: 55, city: "cannes", fullname: function () { return this.firstname + " " + this.lastname } }, ]
 
 //localStorage.setItem("persons", JSON.stringify(persons));//save array into localstorage
 
