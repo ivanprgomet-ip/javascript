@@ -24,13 +24,35 @@ firstApp.persons = [
             firstname: "ronnie", lastname: "bagliatello", age: 55, city: "cannes",
             fullname: function () { return this.firstname + " " + this.lastname }
         }, ]
-firstApp.showAllBtn = $("#show-all");
-firstApp.showSearchBtn = $("#show-search");
-firstApp.showSaveFieldBtn = $("#show-save");
+firstApp.showAll = $("#show-all");
+firstApp.showSearch = $("#show-search");
+firstApp.showSave = $("#show-save");
 
-firstApp.showAllBtn.click(function () {
-    $("#current-output").html("");//reset
-    $.each(firstApp.persons, function (index, value) {
-        $("#current-output").append(index + ": " + value.firstname + " " + value.lastname + " (" + value.age + ") " + value.city + " <br/>");
-    });
+firstApp.showAll.click(function () {
+    $("#search-panel").hide();
+    $("#save-panel").hide();
+    $("#persons-output").toggle();
 })
+
+firstApp.showSave.click(function (e) {
+    $("#search-panel").hide();
+    $("#persons-output").hide();
+    $("#save-panel").toggle();
+})
+
+firstApp.showSearch.click(function (e) {
+    $("#persons-output").hide();
+    $("#save-panel").hide();
+    $("#search-panel").toggle();
+})
+
+
+window.onload = function () {
+    $("#persons-output").hide();
+    $("#save-panel").hide();
+    $("#search-panel").hide();
+
+    $.each(firstApp.persons, function (index, value) {
+        $("#persons-output").append(index + ": " + value.firstname + " " + value.lastname + " (" + value.age + ") " + value.city + " <br/>");
+    });
+}
