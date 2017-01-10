@@ -35,6 +35,7 @@
                 <input type="text" placeholder="lastname" />
                 <input type="number" placeholder="age" />
                 <input type="text" placeholder="city" />
+                <button id="btn-make-save">Save</button>
             </form>
         </section>
         <br />
@@ -42,75 +43,6 @@
 
     </section>
 
-
-    <script>
-        var persons = [
-        { firstname: "ivan", lastname: "prgomet", age: 24, city: "lund", fullname: function () { return this.firstname + " " + this.lastname } },
-        { firstname: "leo", lastname: "capello", age: 34, city: "napoli", fullname: function () { return this.firstname + " " + this.lastname } },
-        { firstname: "abrahamn", lastname: "morcini", age: 25, city: "napoli", fullname: function () { return this.firstname + " " + this.lastname } },
-        { firstname: "sid", lastname: "versace", age: 62, city: "milan", fullname: function () { return this.firstname + " " + this.lastname } },
-        { firstname: "ronnie", lastname: "bagliatello", age: 55, city: "cannes", fullname: function () { return this.firstname + " " + this.lastname } }, ]
-
-        window.onload = function () {
-            //hide some stuff onload
-            document.getElementById("search-panel").style.display = "none";
-            
-
-
-            document.getElementById("btn-show").addEventListener("click", function (e) {
-                e.target.style.backgroundColor = "highlight";
-
-                allResultDiv = document.getElementById("all-result");
-                for(var person of persons)
-                {
-                    allResultDiv.innerHTML += "firstname: " + person.firstname + "<br/>";
-                    allResultDiv.innerHTML += "lastname: " + person.lastname + "<br/>";
-                    allResultDiv.innerHTML += "age: " + person.age + "<br/>";
-                    allResultDiv.innerHTML += "city: " + person.city + "<br/>";
-                    allResultDiv.innerHTML += "fullname: " + person.fullname() + "<br/>";
-                    allResultDiv.innerHTML += "<br/>";
-                }
-            })
-
-            document.getElementById("btn-search").addEventListener("click", function (e) {
-                document.getElementById("search-panel").style.display = "block";
-                document.getElementById("btn-make-search").addEventListener("click", function (e) {
-
-                    //search for people
-                    var searchResultDiv = document.getElementById("search-result");
-                    var searched = document.getElementById("searchterm").value;
-                    var found = [];
-
-                    //store the latest search in localstorage
-                    localStorage.setItem("MostRecentSearch", searched);
-
-
-                    for(var person of persons)
-                    {
-                        if (searched.includes(person.firstname) || searched.includes(person.lastname) ) {
-                            found.push(person);
-                        }
-                    }
-
-                    for(var person of found) {
-                        searchResultDiv.innerHTML += "firstname: " + person.firstname + "<br/>";
-                        searchResultDiv.innerHTML += "lastname: " + person.lastname + "<br/>";
-                        searchResultDiv.innerHTML += "age: " + person.age + "<br/>";
-                        searchResultDiv.innerHTML += "city: " + person.city + "<br/>";
-                        searchResultDiv.innerHTML += "fullname: " + person.fullname()+ "<br/>";
-
-                        searchResultDiv.innerHTML += "<br/>";
-                    }
-
-                })
-                document.getElementById("btn-get-last-search").addEventListener("click", function (e) {
-                    //populate the input search field with latest search
-                    document.getElementById("searchterm").value = localStorage.getItem("MostRecentSearch");
-                    document.getElementById("searchterm").focus();
-                })
-            })
-        }
-
-    </script>
+    <script src="js.js"></script>
 </body>
 </html>
