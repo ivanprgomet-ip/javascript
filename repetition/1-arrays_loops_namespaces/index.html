@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
 </head>
 <body>
-    <section id="buttons" border="1">
+    <section id="container">
 
         <button id="btn-show">Show Persons</button>
         <section>
@@ -13,6 +13,7 @@
                 <!-- all persons -->
             </div>
         </section>
+        <br />
 
         <button id="btn-search">Search Persons</button>
         <section id="search-panel">
@@ -21,7 +22,11 @@
             <div id="search-result">
                 <!-- search results -->
             </div>
+            <button id="btn-get-last-search">Get Last Search</button>
         </section>
+        <br />
+        <br />
+
 
         <button id="btn-add">Add Person</button>
         <section id="add-person-panel">
@@ -32,11 +37,10 @@
                 <input type="text" placeholder="city" />
             </form>
         </section>
+        <br />
+        <br />
 
     </section>
-
-
-
 
 
     <script>
@@ -77,9 +81,13 @@
                     var searched = document.getElementById("searchterm").value;
                     var found = [];
 
+                    //store the latest search in localstorage
+                    localStorage.setItem("MostRecentSearch", searched);
+
+
                     for(var person of persons)
                     {
-                        if (person.firstname == searched || person.lastname == searched) {
+                        if (searched.includes(person.firstname) || searched.includes(person.lastname) ) {
                             found.push(person);
                         }
                     }
@@ -95,7 +103,11 @@
                     }
 
                 })
-
+                document.getElementById("btn-get-last-search").addEventListener("click", function (e) {
+                    //populate the input search field with latest search
+                    document.getElementById("searchterm").value = localStorage.getItem("MostRecentSearch");
+                    document.getElementById("searchterm").focus();
+                })
             })
         }
 
