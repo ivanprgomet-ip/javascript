@@ -58,16 +58,15 @@ function InitEventHandlers() {
 
         //check if user already exists so that we dont add duplicates
         $.each(firstApp.persons, function (index, value) {
-            if(firstname == value.firstname && lastname == value.lastname &&
-                age == value.age && city == value.city)
-            {
+            if (firstname == value.firstname && lastname == value.lastname &&
+                age == value.age && city == value.city) {
                 $("#saveResults").html("this person already exists in database!");
                 userAlreadyExists = true;
             }
         })
 
         if (userAlreadyExists == false) {
-            firstApp.persons.push({firstname:firstname,lastname:lastname,age:age,city:city})
+            firstApp.persons.push({ firstname: firstname, lastname: lastname, age: age, city: city })
             $("#saveResults").html("person successfully saved!");
             console.log(firstApp.persons);
 
@@ -84,30 +83,43 @@ function InitEventHandlers() {
 
     firstApp.search.on("click", function (e) {
         /*difference between jquery.html (= innerHTML) and jquery.append (+= innerHTML*/
-
         $("#searchResults").html("")
         $("#searchResultsCount").removeClass("NothingFoundRed");
         var resultCount = 0;
-
         var searchvalue = $("#searchvalue").val();
 
+        //checking for matching person(s) using promise on each person we look through
         $.each(firstApp.persons, function (index, value) {
-            console.log("inside search loop" + value.firstname)
-            if (searchvalue.includes(value.firstname) ||
-                searchvalue.includes(value.lastname) ||
-                searchvalue.includes(value.firstname + " " + value.lastname)) {
-                resultCount += 1;
+            LookForMatchingPersons(searchvalue, value).then(function () {
                 $("#searchResults").append(value.firstname + " " + value.lastname + " (" + value.age + ") " + value.city + "<br/>");
-            }
-        })
-        if (resultCount > 0)
+            }, function () {
+                console.log("a person that doesnt match found")
+            })
+        });
+
+        if (resultCount > 0) {
             $("#searchResultsCount").html(resultCount + " person(s) found");
-        else {
+        } else {
             $("#searchResultsCount").addClass("NothingFoundRed");
             $("#searchResultsCount").html("No results found");
         }
 
         localStorage.setItem("MostRecentSearch", searchvalue);
+
+        function LookForMatchingPersons(searchValue, value) {
+
+            var promise = $.Deferred();
+
+            if (searchvalue.includes(value.firstname) || searchvalue.includes(value.lastname) || searchvalue.includes(value.firstname + " " + value.lastname)) {
+                resultCount += 1;
+                promise.resolve();
+            }
+            else {
+                promise.reject();
+            }
+
+            return promise;
+        }
     })
 
     firstApp.recentSearch.on("click", function (e) {
@@ -117,6 +129,13 @@ function InitEventHandlers() {
     })
 
 }
+
+
+
+
+
+
+
 function OtherInits() {
     $("#persons-output").hide();
     $("#save-panel").hide();
