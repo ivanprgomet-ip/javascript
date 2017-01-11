@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="scripts/jquery-3.1.1.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+</head>
+<body>
+    <div ng-app="MyApp">
+        <div ng-controller="HomeController">
+
+            <button id="show-all-educations" ng-click="ShowAllEducations = !ShowAllEducations">show all educations</button>
+            <button id="show-all-persons" ng-click="ShowAllPersons = !ShowAllPersons">show all persons</button>
+
+            <input type="text" placeholder="filter currently showing" ng-model="searchterm" />
+
+            <div id="persons-output" ng-show="ShowAllPersons" ng-repeat="person in persons | filter:searchterm"">
+                <p>
+                    {{person.name}} <br /> {{person.education}} <br />starting: {{person.startyear}}
+                </p>
+            </div>
+            <div ng-show="ShowAllEducations" ng-repeat="(key,value) in educations | filter:searchterm">
+                <p>
+                    {{value}}
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
