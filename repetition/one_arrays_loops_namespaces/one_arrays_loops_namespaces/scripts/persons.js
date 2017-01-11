@@ -69,9 +69,11 @@ function InitEventHandlers() {
         if (userAlreadyExists == false) {
             firstApp.persons.push({firstname:firstname,lastname:lastname,age:age,city:city})
             $("#saveResults").html("person successfully saved!");
+            console.log(firstApp.persons);
+
+            //add new person to the existing hidden list of all persons, shows when we press show-all
+            $("#persons-output").append(firstname + " " + lastname + " (" + age + ") " + city + " <br/>");
         }
-
-
     })
 
     firstApp.showSearch.click(function (e) {
@@ -121,7 +123,7 @@ function OtherInits() {
     $("#search-panel").hide();
 
     $.each(firstApp.persons, function (index, value) {
-        $("#persons-output").append(index + ": " + value.firstname + " " + value.lastname + " (" + value.age + ") " + value.city + " <br/>");
+        $("#persons-output").append(value.firstname + " " + value.lastname + " (" + value.age + ") " + value.city + " <br/>");
     });
 }
 
