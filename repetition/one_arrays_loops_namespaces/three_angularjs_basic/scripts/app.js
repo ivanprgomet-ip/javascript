@@ -9,24 +9,19 @@ var app = angular.module("MyApp", [])
         var educations = ["webdeveloper within .net", "web security", "frontend development"];
 
         $scope.persons = persons;
+        $scope.ShowAll2017 = function () {
+            var temp = [];
+            for(var person of persons) {
+                if (person.startyear == 2017)
+                    temp.push(person);
+            }
+            $scope.starting2017 = temp;
+        }
         $scope.educations = educations;
-        //$scope.starting2017 = function () {
-        //    var starting2017 = [];
-        //    $.each(persons, function (index, value) {
-        //        if (value.startyear == 2017)
-        //            starting2017.push[value];
-        //    })
-        //    return starting2017;
-        //}
-
-
-
     })
 
 
 window.onload = function () {
 
-    document.getElementById("show-all-educations").addEventListener("click", function (e) {
-
-    })
+    
 }
