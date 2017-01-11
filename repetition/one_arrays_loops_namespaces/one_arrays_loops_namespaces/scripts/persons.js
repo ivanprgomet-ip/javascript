@@ -92,20 +92,22 @@ function InitEventHandlers() {
         $.each(firstApp.persons, function (index, value) {
             LookForMatchingPersons(searchvalue, value).then(function () {
                 $("#searchResults").append(value.firstname + " " + value.lastname + " (" + value.age + ") " + value.city + "<br/>");
+                console.log("person " + index + ": matched")
             }, function () {
-                console.log("a person that doesnt match found")
+                console.log("person "+index+": not a match")
             })
         });
-
-        if (resultCount > 0) {
+        //checking if a mathing person(s) was found and acting according to both scenarios using promises
+        MatchingPersonsFound(resultCount).then(function () {
             $("#searchResultsCount").html(resultCount + " person(s) found");
-        } else {
+        }, function () {
             $("#searchResultsCount").addClass("NothingFoundRed");
             $("#searchResultsCount").html("No results found");
-        }
+        })
 
         localStorage.setItem("MostRecentSearch", searchvalue);
 
+        //promise functions
         function LookForMatchingPersons(searchValue, value) {
 
             var promise = $.Deferred();
@@ -118,6 +120,15 @@ function InitEventHandlers() {
                 promise.reject();
             }
 
+            return promise;
+        }
+        function MatchingPersonsFound(resultCount) {
+            var promise = $.Deferred();
+            if (resultCount > 0) {
+                promise.resolve();
+            } else {
+                promise.reject();
+            }
             return promise;
         }
     })
