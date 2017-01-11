@@ -5,6 +5,11 @@
     <meta charset="utf-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <style>
+        .NothingFoundRed{
+            color:mediumvioletred;
+        }
+    </style>
 </head>
 <body>
     <section id="buttons">
@@ -13,13 +18,20 @@
         <button id="show-save">show save person field</button>
     </section>
 
-    <section id="persons-output">
-        
-    </section>
+    <section id="persons-output"></section>
+
     <section id="search-panel">
-        <input type="text" placeholder="search" />
+        <input id="searchvalue" type="text" placeholder="search" />
         <button id="search">search</button>
+        <button id="recent-search">most recent search</button>
+        <div id="searchResults">  
+
+        </div>
+        <div id="searchResultsCount">
+
+        </div>
     </section>
+
     <section id="save-panel">
         <input type="text" placeholder="firstname" />
         <input type="text" placeholder="lastname" />
@@ -27,8 +39,6 @@
         <input type="text" placeholder="city" />
         <button id="save">save</button>
     </section>
-
-
 
     <script src="scripts/persons.js"></script>
 </body>
