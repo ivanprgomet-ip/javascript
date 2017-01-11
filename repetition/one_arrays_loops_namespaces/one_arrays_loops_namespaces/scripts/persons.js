@@ -35,6 +35,9 @@ function InitElements() {
 }
 function InitEventHandlers() {
     firstApp.showAll.click(function (e) {
+
+        //TODO: refresh the persons to show so that we also get the newly added persons on the all-list
+
         $("#search-panel").hide();
         $("#save-panel").hide();
         $("#persons-output").toggle();
@@ -44,6 +47,31 @@ function InitEventHandlers() {
         $("#search-panel").hide();
         $("#persons-output").hide();
         $("#save-panel").toggle();
+    })
+    firstApp.save.on("click", function (e) {
+        var firstname = $("#firstname").val();
+        var lastname = $("#lastname").val();
+        var age = $("#age").val();
+        var city = $("#city").val();
+
+        var userAlreadyExists = false;
+
+        //check if user already exists so that we dont add duplicates
+        $.each(firstApp.persons, function (index, value) {
+            if(firstname == value.firstname && lastname == value.lastname &&
+                age == value.age && city == value.city)
+            {
+                $("#saveResults").html("this person already exists in database!");
+                userAlreadyExists = true;
+            }
+        })
+
+        if (userAlreadyExists == false) {
+            firstApp.persons.push({firstname:firstname,lastname:lastname,age:age,city:city})
+            $("#saveResults").html("person successfully saved!");
+        }
+
+
     })
 
     firstApp.showSearch.click(function (e) {
@@ -87,8 +115,7 @@ function InitEventHandlers() {
     })
 
 }
-
-window.onload = function () {
+function OtherInits() {
     $("#persons-output").hide();
     $("#save-panel").hide();
     $("#search-panel").hide();
@@ -96,7 +123,14 @@ window.onload = function () {
     $.each(firstApp.persons, function (index, value) {
         $("#persons-output").append(index + ": " + value.firstname + " " + value.lastname + " (" + value.age + ") " + value.city + " <br/>");
     });
+}
+
+$(document).ready(function () {
+
+    OtherInits();
 
     InitElements();
+
     InitEventHandlers();
-}
+
+})
