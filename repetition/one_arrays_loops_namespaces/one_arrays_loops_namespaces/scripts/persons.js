@@ -78,6 +78,7 @@ firstApp.search.on("click", function (e) {
 })
 
 firstApp.recentSearch.on("click", function (e) {
+    $(e.target).addClass("ClickedMostRecent");
     var mostRecentSearch = localStorage.getItem("MostRecentSearch");
     $("#searchvalue").val(mostRecentSearch);
 })
