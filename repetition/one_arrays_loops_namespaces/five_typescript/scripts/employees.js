@@ -5,14 +5,14 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var EmployeeManagementSystem;
 (function (EmployeeManagementSystem) {
-    var Department;
     (function (Department) {
         Department[Department["Administration"] = 1] = "Administration";
         Department[Department["Tech"] = 2] = "Tech";
         Department[Department["IT"] = 3] = "IT";
         Department[Department["Marketing"] = 4] = "Marketing";
         Department[Department["HR"] = 5] = "HR";
-    })(Department || (Department = {}));
+    })(EmployeeManagementSystem.Department || (EmployeeManagementSystem.Department = {}));
+    var Department = EmployeeManagementSystem.Department;
     //arrays of different employee types
     EmployeeManagementSystem.fulltimers = [];
     EmployeeManagementSystem.parttimers = [];
@@ -32,8 +32,8 @@ var EmployeeManagementSystem;
             return all;
         };
         function AppInit() {
-            EmployeeManagementSystem.fulltimers.push(new EmployeeManagementSystem.FullTimeEmployee("ivan", "prgomet", "it", true, "passionate"), new EmployeeManagementSystem.FullTimeEmployee("lea", "winchester", "marketing", false, "very talkative"), new EmployeeManagementSystem.FullTimeEmployee("rocco", "farcello", "hr", true, "funny"));
-            EmployeeManagementSystem.parttimers.push(new EmployeeManagementSystem.PartTimeEmployee("sid", "morcini", "marketing", true, true));
+            EmployeeManagementSystem.fulltimers.push(new EmployeeManagementSystem.FullTimeEmployee("ivan", "prgomet", Department.IT, true, "passionate"), new EmployeeManagementSystem.FullTimeEmployee("lea", "winchester", Department.Marketing, false, "very talkative"), new EmployeeManagementSystem.FullTimeEmployee("rocco", "farcello", Department.HR, true, "funny"));
+            EmployeeManagementSystem.parttimers.push(new EmployeeManagementSystem.PartTimeEmployee("sid", "morcini", Department.Marketing, true, true));
             EmployeeManagementSystem.all = EmployeeManagementSystem.Functions.GetAllEmployees();
         }
         Functions.AppInit = AppInit;
@@ -84,14 +84,14 @@ window.onload = function () {
         EmployeeManagementSystem.Functions.ResetAllDivs();
         for (var _i = 0, _a = EmployeeManagementSystem.all; _i < _a.length; _i++) {
             var emp = _a[_i];
-            divAll.innerHTML += emp.Firstname + " " + emp.Lastname + " (" + emp.Department + ")<br/>";
+            divAll.innerHTML += emp.Firstname + " " + emp.Lastname + " (" + EmployeeManagementSystem.Department[emp.Department] + ")<br/>";
         }
     });
     document.getElementById("btnFulltimeEmployees").addEventListener("click", function (e) {
         EmployeeManagementSystem.Functions.ResetAllDivs();
         for (var _i = 0, _a = EmployeeManagementSystem.fulltimers; _i < _a.length; _i++) {
             var emp = _a[_i];
-            divFulltime.innerHTML += emp.Firstname + " " + emp.Lastname + " (" + emp.Department + ")<br/>has car: "
+            divFulltime.innerHTML += emp.Firstname + " " + emp.Lastname + " (" + EmployeeManagementSystem.Department[emp.Department] + ")<br/>has car: "
                 + emp.HasCar + "<br/>other info:" + emp.OtherInfo + "<br/><br/>";
         }
     });
@@ -99,7 +99,7 @@ window.onload = function () {
         EmployeeManagementSystem.Functions.ResetAllDivs();
         for (var _i = 0, _a = EmployeeManagementSystem.parttimers; _i < _a.length; _i++) {
             var emp = _a[_i];
-            divParttime.innerHTML += emp.Firstname + " " + emp.Lastname + "<br/>" + emp.Department + "<br/>has service car: "
+            divParttime.innerHTML += emp.Firstname + " " + emp.Lastname + "<br/>" + EmployeeManagementSystem.Department[emp.Department] + "<br/>has service car: "
                 + emp.HasServiceCar + "<br/>has company uniform: " + emp.HasCompanyUniform + "<br/><br/>";
         }
     });
