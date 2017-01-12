@@ -1,6 +1,24 @@
 ﻿module EmployeeManagementSystem {
-
     enum Department { Administration = 1, Tech, IT, Marketing, HR }
+
+    //arrays of different employee types
+    export let fulltimers: FullTimeEmployee[] = [];
+    export let parttimers: PartTimeEmployee[] = [];
+
+    //function to get all employees
+    export let GetAllEmployees = function (): EmployeeManagementSystem.Employee[] {
+        let all: EmployeeManagementSystem.Employee[] = [];
+
+        for (var fulltimer of fulltimers) {
+            all.push(fulltimer);
+        }
+        for (var parttimer of parttimers) {
+            all.push(parttimer);
+        }
+
+        return all;
+    };
+
 
     export class Employee {
         Firstname: string;
@@ -35,36 +53,25 @@
             this.HasCompanyUniform = hascompanyuniform;
         }
     }
+}
+module Functions {
+    export function AppInit() {
+        EmployeeManagementSystem.fulltimers.push(
+            new EmployeeManagementSystem.FullTimeEmployee("ivan", "prgomet", "it", true, "passionate"),
+            new EmployeeManagementSystem.FullTimeEmployee("lea", "winchester", "marketing", false, "very talkative"),
+            new EmployeeManagementSystem.FullTimeEmployee("rocco", "farcello", "hr", true, "funny")
+        );
 
+        EmployeeManagementSystem.parttimers.push(
+            new EmployeeManagementSystem.PartTimeEmployee("sid", "morcini", "marketing", true, true)
+        );
 
-
+        let all = EmployeeManagementSystem.GetAllEmployees();
+    }
 }
 
 window.onload = function () {
+    Functions.AppInit();
 
-    let fulltimers: EmployeeManagementSystem.Employee[] = [
-            new EmployeeManagementSystem.FullTimeEmployee("ivan", "prgomet", "it", true, "passionate"),
-            new EmployeeManagementSystem.FullTimeEmployee("lea", "winchester", "marketing", false, "very talkative"),
-            new EmployeeManagementSystem.FullTimeEmployee("rocco", "farcello", "hr", true, "funny"),
-            new EmployeeManagementSystem.PartTimeEmployee("sid", "morcini", "marketing", true, true),
-    ];
-    let parttimers: EmployeeManagementSystem.Employee[] = [
-        new EmployeeManagementSystem.PartTimeEmployee("sid", "morcini", "marketing", true, true),
-    ];
 
-    let GetAllEmployees = function (): EmployeeManagementSystem.Employee[] {
-        let all: EmployeeManagementSystem.Employee[] = [];
-
-        for (var fulltimer of fulltimers) {
-            all.push(fulltimer);
-        }
-        for (var parttimer of parttimers) {
-            all.push(parttimer);
-        }
-
-        return all;
-    };
-
-    let all = GetAllEmployees();
-    console.log(all);
 }

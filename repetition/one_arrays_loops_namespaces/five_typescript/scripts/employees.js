@@ -13,6 +13,22 @@ var EmployeeManagementSystem;
         Department[Department["Marketing"] = 4] = "Marketing";
         Department[Department["HR"] = 5] = "HR";
     })(Department || (Department = {}));
+    //arrays of different employee types
+    EmployeeManagementSystem.fulltimers = [];
+    EmployeeManagementSystem.parttimers = [];
+    //function to get all employees
+    EmployeeManagementSystem.GetAllEmployees = function () {
+        var all = [];
+        for (var _i = 0; _i < EmployeeManagementSystem.fulltimers.length; _i++) {
+            var fulltimer = EmployeeManagementSystem.fulltimers[_i];
+            all.push(fulltimer);
+        }
+        for (var _a = 0; _a < EmployeeManagementSystem.parttimers.length; _a++) {
+            var parttimer = EmployeeManagementSystem.parttimers[_a];
+            all.push(parttimer);
+        }
+        return all;
+    };
     var Employee = (function () {
         function Employee(firstname, lastname, department) {
             this.Firstname = firstname;
@@ -43,28 +59,15 @@ var EmployeeManagementSystem;
     })(Employee);
     EmployeeManagementSystem.PartTimeEmployee = PartTimeEmployee;
 })(EmployeeManagementSystem || (EmployeeManagementSystem = {}));
+var Functions;
+(function (Functions) {
+    function AppInit() {
+        EmployeeManagementSystem.fulltimers.push(new EmployeeManagementSystem.FullTimeEmployee("ivan", "prgomet", "it", true, "passionate"), new EmployeeManagementSystem.FullTimeEmployee("lea", "winchester", "marketing", false, "very talkative"), new EmployeeManagementSystem.FullTimeEmployee("rocco", "farcello", "hr", true, "funny"));
+        EmployeeManagementSystem.parttimers.push(new EmployeeManagementSystem.PartTimeEmployee("sid", "morcini", "marketing", true, true));
+        var all = EmployeeManagementSystem.GetAllEmployees();
+    }
+    Functions.AppInit = AppInit;
+})(Functions || (Functions = {}));
 window.onload = function () {
-    var fulltimers = [
-        new EmployeeManagementSystem.FullTimeEmployee("ivan", "prgomet", "it", true, "passionate"),
-        new EmployeeManagementSystem.FullTimeEmployee("lea", "winchester", "marketing", false, "very talkative"),
-        new EmployeeManagementSystem.FullTimeEmployee("rocco", "farcello", "hr", true, "funny"),
-        new EmployeeManagementSystem.PartTimeEmployee("sid", "morcini", "marketing", true, true),
-    ];
-    var parttimers = [
-        new EmployeeManagementSystem.PartTimeEmployee("sid", "morcini", "marketing", true, true),
-    ];
-    var GetAllEmployees = function () {
-        var all = [];
-        for (var _i = 0; _i < fulltimers.length; _i++) {
-            var fulltimer = fulltimers[_i];
-            all.push(fulltimer);
-        }
-        for (var _a = 0; _a < parttimers.length; _a++) {
-            var parttimer = parttimers[_a];
-            all.push(parttimer);
-        }
-        return all;
-    };
-    var all = GetAllEmployees();
-    console.log(all);
+    Functions.AppInit();
 };
