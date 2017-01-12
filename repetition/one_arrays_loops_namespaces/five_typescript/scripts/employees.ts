@@ -4,22 +4,42 @@
     //arrays of different employee types
     export let fulltimers: FullTimeEmployee[] = [];
     export let parttimers: PartTimeEmployee[] = [];
+    export let all: Employee[] = [];
 
-    //function to get all employees
-    export let GetAllEmployees = function (): EmployeeManagementSystem.Employee[] {
-        let all: EmployeeManagementSystem.Employee[] = [];
+    export module Functions {
+        export let GetAllEmployees = function (): EmployeeManagementSystem.Employee[] {
+            let all: EmployeeManagementSystem.Employee[] = [];
 
-        for (var fulltimer of fulltimers) {
-            all.push(fulltimer);
+            for (var fulltimer of fulltimers) {
+                all.push(fulltimer);
+            }
+            for (var parttimer of parttimers) {
+                all.push(parttimer);
+            }
+
+            return all;
+        };
+        export function AppInit() {
+            EmployeeManagementSystem.fulltimers.push(
+                new EmployeeManagementSystem.FullTimeEmployee("ivan", "prgomet", "it", true, "passionate"),
+                new EmployeeManagementSystem.FullTimeEmployee("lea", "winchester", "marketing", false, "very talkative"),
+                new EmployeeManagementSystem.FullTimeEmployee("rocco", "farcello", "hr", true, "funny")
+            );
+
+            EmployeeManagementSystem.parttimers.push(
+                new EmployeeManagementSystem.PartTimeEmployee("sid", "morcini", "marketing", true, true)
+            );
+
+            EmployeeManagementSystem.all = EmployeeManagementSystem.Functions.GetAllEmployees();
         }
-        for (var parttimer of parttimers) {
-            all.push(parttimer);
+        export function ResetAllDivs() {
+            document.getElementById("all-employees").innerHTML = "";
+            document.getElementById("all-fulltime").innerHTML = "";
+            document.getElementById("all-parttime").innerHTML = "";
         }
-
-        return all;
-    };
-
-
+    }
+    
+    //employee classes
     export class Employee {
         Firstname: string;
         Lastname: string;
@@ -54,24 +74,35 @@
         }
     }
 }
-module Functions {
-    export function AppInit() {
-        EmployeeManagementSystem.fulltimers.push(
-            new EmployeeManagementSystem.FullTimeEmployee("ivan", "prgomet", "it", true, "passionate"),
-            new EmployeeManagementSystem.FullTimeEmployee("lea", "winchester", "marketing", false, "very talkative"),
-            new EmployeeManagementSystem.FullTimeEmployee("rocco", "farcello", "hr", true, "funny")
-        );
 
-        EmployeeManagementSystem.parttimers.push(
-            new EmployeeManagementSystem.PartTimeEmployee("sid", "morcini", "marketing", true, true)
-        );
-
-        let all = EmployeeManagementSystem.GetAllEmployees();
-    }
-}
 
 window.onload = function () {
-    Functions.AppInit();
+    EmployeeManagementSystem.Functions.AppInit();
 
+    var divAll = document.getElementById("all-employees");
+    var divFulltime = document.getElementById("all-fulltime");
+    var divParttime = document.getElementById("all-parttime");
+
+    document.getElementById("btnEmployees").addEventListener("click", function (e) {
+        EmployeeManagementSystem.Functions.ResetAllDivs();
+        for (var emp of EmployeeManagementSystem.all) {
+            divAll.innerHTML += emp.Firstname + " " + emp.Lastname + " (" + emp.Department + ")<br/>";
+        }
+    })
+    document.getElementById("btnFulltimeEmployees").addEventListener("click", function (e) {
+        EmployeeManagementSystem.Functions.ResetAllDivs();
+
+        for (var emp of EmployeeManagementSystem.fulltimers) {
+            divFulltime.innerHTML += emp.Firstname + " " + emp.Lastname + " (" + emp.Department + ")<br/>has car: "
+                + emp.HasCar + "<br/>other info:" + emp.OtherInfo + "<br/><br/>";
+        }
+    })
+    document.getElementById("btnPartTimeEmployees").addEventListener("click", function (e) {
+        EmployeeManagementSystem.Functions.ResetAllDivs();
+        for (var emp of EmployeeManagementSystem.parttimers) {
+            divParttime.innerHTML += emp.Firstname + " " + emp.Lastname + "<br/>" + emp.Department + "<br/>has service car: "
+                + emp.HasServiceCar + "<br/>has company uniform: " + emp.HasCompanyUniform + "<br/><br/>";
+        }
+    })
 
 }

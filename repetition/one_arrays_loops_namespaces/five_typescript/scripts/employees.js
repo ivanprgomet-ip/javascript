@@ -16,19 +16,35 @@ var EmployeeManagementSystem;
     //arrays of different employee types
     EmployeeManagementSystem.fulltimers = [];
     EmployeeManagementSystem.parttimers = [];
-    //function to get all employees
-    EmployeeManagementSystem.GetAllEmployees = function () {
-        var all = [];
-        for (var _i = 0; _i < EmployeeManagementSystem.fulltimers.length; _i++) {
-            var fulltimer = EmployeeManagementSystem.fulltimers[_i];
-            all.push(fulltimer);
+    EmployeeManagementSystem.all = [];
+    var Functions;
+    (function (Functions) {
+        Functions.GetAllEmployees = function () {
+            var all = [];
+            for (var _i = 0; _i < EmployeeManagementSystem.fulltimers.length; _i++) {
+                var fulltimer = EmployeeManagementSystem.fulltimers[_i];
+                all.push(fulltimer);
+            }
+            for (var _a = 0; _a < EmployeeManagementSystem.parttimers.length; _a++) {
+                var parttimer = EmployeeManagementSystem.parttimers[_a];
+                all.push(parttimer);
+            }
+            return all;
+        };
+        function AppInit() {
+            EmployeeManagementSystem.fulltimers.push(new EmployeeManagementSystem.FullTimeEmployee("ivan", "prgomet", "it", true, "passionate"), new EmployeeManagementSystem.FullTimeEmployee("lea", "winchester", "marketing", false, "very talkative"), new EmployeeManagementSystem.FullTimeEmployee("rocco", "farcello", "hr", true, "funny"));
+            EmployeeManagementSystem.parttimers.push(new EmployeeManagementSystem.PartTimeEmployee("sid", "morcini", "marketing", true, true));
+            EmployeeManagementSystem.all = EmployeeManagementSystem.Functions.GetAllEmployees();
         }
-        for (var _a = 0; _a < EmployeeManagementSystem.parttimers.length; _a++) {
-            var parttimer = EmployeeManagementSystem.parttimers[_a];
-            all.push(parttimer);
+        Functions.AppInit = AppInit;
+        function ResetAllDivs() {
+            document.getElementById("all-employees").innerHTML = "";
+            document.getElementById("all-fulltime").innerHTML = "";
+            document.getElementById("all-parttime").innerHTML = "";
         }
-        return all;
-    };
+        Functions.ResetAllDivs = ResetAllDivs;
+    })(Functions = EmployeeManagementSystem.Functions || (EmployeeManagementSystem.Functions = {}));
+    //employee classes
     var Employee = (function () {
         function Employee(firstname, lastname, department) {
             this.Firstname = firstname;
@@ -59,15 +75,32 @@ var EmployeeManagementSystem;
     })(Employee);
     EmployeeManagementSystem.PartTimeEmployee = PartTimeEmployee;
 })(EmployeeManagementSystem || (EmployeeManagementSystem = {}));
-var Functions;
-(function (Functions) {
-    function AppInit() {
-        EmployeeManagementSystem.fulltimers.push(new EmployeeManagementSystem.FullTimeEmployee("ivan", "prgomet", "it", true, "passionate"), new EmployeeManagementSystem.FullTimeEmployee("lea", "winchester", "marketing", false, "very talkative"), new EmployeeManagementSystem.FullTimeEmployee("rocco", "farcello", "hr", true, "funny"));
-        EmployeeManagementSystem.parttimers.push(new EmployeeManagementSystem.PartTimeEmployee("sid", "morcini", "marketing", true, true));
-        var all = EmployeeManagementSystem.GetAllEmployees();
-    }
-    Functions.AppInit = AppInit;
-})(Functions || (Functions = {}));
 window.onload = function () {
-    Functions.AppInit();
+    EmployeeManagementSystem.Functions.AppInit();
+    var divAll = document.getElementById("all-employees");
+    var divFulltime = document.getElementById("all-fulltime");
+    var divParttime = document.getElementById("all-parttime");
+    document.getElementById("btnEmployees").addEventListener("click", function (e) {
+        EmployeeManagementSystem.Functions.ResetAllDivs();
+        for (var _i = 0, _a = EmployeeManagementSystem.all; _i < _a.length; _i++) {
+            var emp = _a[_i];
+            divAll.innerHTML += emp.Firstname + " " + emp.Lastname + " (" + emp.Department + ")<br/>";
+        }
+    });
+    document.getElementById("btnFulltimeEmployees").addEventListener("click", function (e) {
+        EmployeeManagementSystem.Functions.ResetAllDivs();
+        for (var _i = 0, _a = EmployeeManagementSystem.fulltimers; _i < _a.length; _i++) {
+            var emp = _a[_i];
+            divFulltime.innerHTML += emp.Firstname + " " + emp.Lastname + " (" + emp.Department + ")<br/>has car: "
+                + emp.HasCar + "<br/>other info:" + emp.OtherInfo + "<br/><br/>";
+        }
+    });
+    document.getElementById("btnPartTimeEmployees").addEventListener("click", function (e) {
+        EmployeeManagementSystem.Functions.ResetAllDivs();
+        for (var _i = 0, _a = EmployeeManagementSystem.parttimers; _i < _a.length; _i++) {
+            var emp = _a[_i];
+            divParttime.innerHTML += emp.Firstname + " " + emp.Lastname + "<br/>" + emp.Department + "<br/>has service car: "
+                + emp.HasServiceCar + "<br/>has company uniform: " + emp.HasCompanyUniform + "<br/><br/>";
+        }
+    });
 };
