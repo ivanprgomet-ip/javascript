@@ -98,6 +98,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="pages\allpersons2017.html" />
+    <Content Include="pages\alleducations.html" />
+    <Content Include="pages\allpersons.html" />
+    <Content Include="pages\default.html" />
     <Content Include="scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="scripts\jquery-3.1.1.min.map" />
     <None Include="Web.Debug.config">

@@ -1,0 +1,8 @@
+﻿<div>
+    <h2>Persons</h2>
+    <div id="persons-output" ng-repeat="person in persons | filter:searchterm" ">
+        <p>
+            {{person.name}} <br /> {{person.education}} <br />starting: {{person.startyear}}
+        </p>
+    </div>
+</div>
