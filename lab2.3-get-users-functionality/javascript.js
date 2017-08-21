@@ -1,41 +1,100 @@
-var ErrorElem = document.getElementById("error-message");
-
-var ageFieldValue = document.getElementById("age");
-
-var hiddenTextElem = document.getElementById("text-hidden");
-
-function Validate() {
-    //check if the age field contains other thatn numbers
-    if (isNaN(ageFieldValue.value)) //if ageFieldValue input 'is Not a Number'
+var users = [
     {
-        ErrorElem.innerHTML = "value entered into age field is not a number!";
-        ErrorElem.style.backgroundColor = "lightcoral";
-
-        //old green message hidden again if new value is not legit
-        hiddenTextElem.style.display = "none";
+        username: "ivanprgomet",
+        firstname: "Ivan",
+        lastname: "Prgomet",
+        telnummer: "0737485932",
+        city: "Lund",
+        age: 25
+    },
+    {
+        username: "jamesbond",
+        firstname: "Pierce",
+        lastname: "Brosnan",
+        telnummer: "0737482042",
+        city: "Bahamas",
+        age: 49
+    },
+    {
+        username: "peakyblinder",
+        firstname: "Thomas",
+        lastname: "Shelby",
+        telnummer: "0738493021",
+        city: "Birmingham",
+        age: 48
     }
-    else {//else if input is legit
-
-        //old message removed if new value is legit
-        ErrorElem.innerHTML = "";
-
-        //hidden text input is populated with the information from the form
-        var form = document.getElementById("myForm");//get form
-        var inputs = form.getElementsByTagName("input");//get inputs in the form
-        var inputsConsolidated = "";//will store all input values in one string
-        for (var i = 0; i < inputs.length; i++) {
-            inputsConsolidated += inputs[i].value + " ";
-        }
-        var oldAge = form["age"].value;
-        oldAge = oldAge - 10;
-        inputsConsolidated += " 10 years ago, you were " + oldAge + " years old!"
+    ]
 
 
-        hiddenTextElem.style.display = "block";
-        hiddenTextElem.style.backgroundColor = "lightgreen";
-        hiddenTextElem.style.width = "100%";
-        hiddenTextElem.value = inputsConsolidated;
+var errorDiv = $('#error');
+var submit = $('#submit');
+var age = $('#age');
+var result = $('#hiddenText');
+var form = $('#form');
+var username = $('#username');
+var firstname = $('#firstname');
+var lastname = $('#lastname');
+var telnummer = $('#phone');
+var city = $('#city');
+var fetch = $('#getUser');
+var fetchError = $('#fetchError');
 
-        form.style.display = "none";
-    }
-}
+submit.on("click", function(e){
+
+        errorDiv.html("");
+        errorDiv.css('background-color', "");
+        result.css('visibility', 'hidden');
+        fetchError.text("");
+
+    if(age.val() < 1 || age.val() > 110 ){
+        errorDiv.html(age.val() + " Är ingen giltig ålder.");
+        errorDiv.css('background-color', "#FFA5A5");
+    } else {
+        var newAge = age.val() - 10;
+        form.css('display', 'none');
+        result.css('visibility', '');
+        result.css('background-color', '#BEF2A4');
+        result.val(
+            username.val() + "\n" + 
+            firstname.val() + "\n" + 
+            lastname.val() + "\n" + 
+            telnummer.val() + "\n" + 
+            city.val() + "\n" + 
+            age.val() + "\n" +
+            "Ten years ago you were " + newAge + " years old!"
+        );
+        
+    };
+});
+
+fetch.on("click", function(e){
+    fetchError.text("");
+
+    var user = {
+        username: "",
+        firstname: "",
+        lastname: "",
+        telnummer: "",
+        city: "",
+        age: ""
+    };
+
+    $.each(users, function(key, value){
+        if(username.val() == value.username) {
+            user = value;
+        } 
+    });
+
+    if (user.username != ""){
+        username.val(user.username);
+        firstname.val(user.firstname);
+        lastname.val(user.lastname);
+        telnummer.val(user.telnummer);
+        city.val(user.city);
+        age.val(user.age);
+    } else {
+        fetchError.text("The user doesnt exist...");
+        fetchError.css('color', 'red');
+    };
+    
+});
