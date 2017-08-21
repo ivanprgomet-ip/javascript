@@ -1,39 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Home</title>
-        <link rel="stylesheet" href="ipstyle.css">
-    </head>
-
-    <body>
-        <form id="myForm" action="#">
-            <label for="username">username</label>
-            <input type="text" id="username">
-
-            <label for="firstname">firstname</label>
-            <input type="text" id="firstname">
-
-            <label for="lastname">lastname</label>
-            <input type="text" id="lastname">
-
-            <label for="phone">phone</label>
-            <input type="text" id="phone">
-
-            <label for="city">city:</label>
-            <input type="text" id="city">
-
-            <label for="age">age</label>
-            <input type="text" id="age">
-
-            <br>
-            <button name="send" id="send" onclick="Validate()">send</button>
-        </form>
-        <br>
-        <div id="error-message">
-
-        </div>
-        <br>
-        <input type="text" id="text-hidden">
-    </body>
+<head>
+    <title>Labb 2.2</title>
+</head>
+<body>
+    <div id="error"></div>
+    <div id="form">
+        <label>Username:</label>
+        <input type="text" id="username" />
+        <label>Firstname:</label>
+        <input type="text" id="firstname" />
+        <label>Lastname:</label>
+        <input type="text" id="lastname" />
+        <label>Phone:</label>
+        <input type="text" id="phone" />
+        <label>City:</label>
+        <input type="text" id="city" />
+        <label>Age:</label>
+        <input type="number" id="age" />
+        <button id="submit">Send</button>
+    </div>
+    <br />
+    <textarea id="hiddenText" style="visibility:hidden" rows="12"></textarea>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.js"></script>
+    <script src="javascript.js"></script>
+</body>
 </html>
-<script src="javascript.js"></script>

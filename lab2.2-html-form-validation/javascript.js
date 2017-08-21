@@ -1,41 +1,32 @@
-var ErrorElem = document.getElementById("error-message");
+var errorDiv = $('#error');
+var submit = $('#submit');
+var age = $('#age');
+var result = $('#hiddenText');
+var form = $('#form');
 
-var ageFieldValue = document.getElementById("age");
+submit.on("click", function (e) {
 
-var hiddenTextElem = document.getElementById("text-hidden");
+    errorDiv.html("");
+    errorDiv.css('background-color', "");
+    result.css('visibility', 'hidden');
 
-function Validate() {
-    //check if the age field contains other thatn numbers
-    if (isNaN(ageFieldValue.value)) //if ageFieldValue input 'is Not a Number'
-    {
-        ErrorElem.innerHTML = "value entered into age field is not a number!";
-        ErrorElem.style.backgroundColor = "lightcoral";
+    if (age.val() < 1 || age.val() > 110) {
+        errorDiv.html(age.val() + " is not a valid age!");
+        errorDiv.css('background-color', "#FFA5A5");
+    } else {
+        var newAge = age.val() - 10;
+        form.css('visibility', 'hidden');
+        result.css('visibility', '');
+        result.css('background-color', '#BEF2A4');
+        result.val(
+            $('#username').val() + "\n" +
+            $('#firstname').val() + "\n" +
+            $('#lastname').val() + "\n" +
+            $('#phone').val() + "\n" +
+            $('#city').val() + "\n" +
+            age.val() + "\n" +
+            "Ten years ago you were " + newAge + " years old!"
+        );
 
-        //old green message hidden again if new value is not legit
-        hiddenTextElem.style.display = "none";
-    }
-    else {//else if input is legit
-
-        //old message removed if new value is legit
-        ErrorElem.innerHTML = "";
-
-        //hidden text input is populated with the information from the form
-        var form = document.getElementById("myForm");//get form
-        var inputs = form.getElementsByTagName("input");//get inputs in the form
-        var inputsConsolidated = "";//will store all input values in one string
-        for (var i = 0; i < inputs.length; i++) {
-            inputsConsolidated += inputs[i].value + " ";
-        }
-        var oldAge = form["age"].value;
-        oldAge = oldAge - 10;
-        inputsConsolidated += " 10 years ago, you were " + oldAge + " years old!"
-
-
-        hiddenTextElem.style.display = "block";
-        hiddenTextElem.style.backgroundColor = "lightgreen";
-        hiddenTextElem.style.width = "100%";
-        hiddenTextElem.value = inputsConsolidated;
-
-        form.style.display = "none";
-    }
-}
+    };
+});
