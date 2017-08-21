@@ -140,11 +140,11 @@ var HomeController = app.controller("HomeController", function ($scope) {//using
 
         console.log(newBook);
 
-        //clear the input boxes after submitting new book
+        //clear the input boxes after submitting new book (commented out due to error)
         var inputs = document.getElementsByTagName("form")[0].getElementsByTagName("input");
-        for (var input of inputs) {
-            input.value = "";
-        }
+        //for (var input of inputs) {
+        //    input.value = "";
+        //}
     }
 
 });

@@ -31,3 +31,36 @@ C:\Users\Ivan\Desktop\javascript laborations\lesson7\lab7.1_typescript_basics\bi
 C:\Users\Ivan\Desktop\javascript laborations\lesson7\lab7.1_typescript_basics\obj\Debug\lab7.1_typescript_basics.csprojResolveAssemblyReference.cache
 C:\Users\Ivan\Desktop\javascript laborations\lesson7\lab7.1_typescript_basics\obj\Debug\lab7.1_typescript_basics.dll
 C:\Users\Ivan\Desktop\javascript laborations\lesson7\lab7.1_typescript_basics\obj\Debug\lab7.1_typescript_basics.pdb
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\ApplicationInsights.config
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\roslyn\csc.exe
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\roslyn\vbc.exe
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\roslyn\VBCSCompiler.exe
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\lab7.1_typescript_basics.dll.config
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\lab7.1_typescript_basics.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\lab7.1_typescript_basics.pdb
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.AI.Web.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.ApplicationInsights.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.AI.Web.xml
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.ApplicationInsights.xml
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\obj\Debug\lab7.1_typescript_basics.csprojResolveAssemblyReference.cache
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\obj\Debug\lab7.1_typescript_basics.dll
+C:\Users\ivan_\Desktop\ClonedFromGithub\Lab7\lab7.1_typescript_basics\obj\Debug\lab7.1_typescript_basics.pdb
