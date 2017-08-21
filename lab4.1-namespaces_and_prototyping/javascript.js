@@ -1,6 +1,6 @@
 var MyApp = MyApp || {};
 
-MyApp.anstallda = [
+MyApp.emps = [
     {
         name: "emp1"
     },
@@ -21,7 +21,7 @@ MyApp.anstallda = [
     },
 ];
 
-MyApp.bilar = [
+MyApp.cars = [
     {
         name: "car1"
     },
@@ -46,14 +46,14 @@ MyApp.div = $('#content');
 
 $("#empButton").on('click', function () {
     MyApp.div.html("");
-    $.each(MyApp.anstallda, function (key, value) {
+    $.each(MyApp.emps, function (key, value) {
         MyApp.div.append('<p>' + value.name + '</p>');
     });
 });
 
 $("#carsButton").on('click', function () {
     MyApp.div.html("");
-    $.each(MyApp.bilar, function (key, value) {
+    $.each(MyApp.cars, function (key, value) {
         MyApp.div.append('<p>' + value.name + '</p>');
     });
 });

@@ -1,58 +1,92 @@
-//INITIALIZING PROTOTYPES AND ARRAYS 
-var Employee = function (name, hasDriversLicense) {
-    this.Name = name;
-    this.HasDriversLicense = hasDriversLicense;
-    return this.Name;
-}
+var MyApp = MyApp || {};
 
-var Car = function (name) {
-    this.Name = name;
-    return this.Name;
-}
+MyApp.emps = [
+    {
+        name: "emp1",
+        car: false
+    },
+    {
+        name: "emp2",
+        car: true
+    },
+    {
+        name: "emp3",
+        car: true
+    },
+    {
+        name: "emp4",
+        car: false
+    },
+    {
+        name: "emp5",
+        car: false
+    },
+    {
+        name: "emp6",
+        car: false
+    },
+];
 
-var employees = [
-    new Employee("ivan", true),
-    new Employee("lea", true),
-    new Employee("jason", false),
-]
+MyApp.cars = [
+    {
+        name: "car1"
+    },
+    {
+        name: "car2"
+    },
+    {
+        name: "car3"
+    },
+    {
+        name: "car4"
+    },
+    {
+        name: "car5"
+    },
+    {
+        name: "car6"
+    },
+];
 
-var cars = [
-    new Car("fiat"),
-    new Car("peugeot"),
-    new Car("audi"),
-]
+MyApp.div = $('#content');
 
-$(document).ready(function () {
-    var employeeListElement = document.getElementById("list1");
+MyApp.CheckIfCar = function (emps) {
+    var dfd = $.Deferred();
+    var bool = false;
 
-
-    function FetchPromise(currentValue) {
-        var dfd = $.Deferred();
-        if (currentValue.HasDriversLicense) {
-            dfd.resolve();
+    $.each(emps, function (key, value) {
+        if (value.car) {
+            MyApp.div.append('<p>' + value.name + '</p>');
+            bool = true;
         }
-        else {
-            dfd.reject();
-        }
-
-        return dfd.promise();//----------PROMISE
-    }
-
-    function resolvedFunction() {
-        $("#list1").append(currentValue.Name + " has a license to drive <br/>");
-    }
-
-    $.each(employees, function (currentIndex, currentValue) {
-        FetchPromise(currentValue).then(function () {
-            //this runs if the fetched promise object was resolved
-            $("#list1").append(currentValue.Name + " has a license to drive <br/>");
-        }, function () {
-            //this runs if the fetched promise object was rejected
-            $("#list1").append("found person that doesnt have a license to drive <br/>");
-        }).always(function () {
-            //this will allways run, whether fetched promise was resolved or rejected
-            $("#list1").append("DONE<br/>");
-        });
     });
-})
+
+    if (bool) {
+        dfd.resolve();
+    } else {
+        dfd.reject();
+    }
+
+    return dfd.promise();
+};
+
+$("#empButton").on('click', function () {
+    MyApp.div.html("");
+    MyApp.CheckIfCar(MyApp.emps).then(
+        function () { },
+        function () {
+            MyApp.div.html("There are no employees that are allowed to drive the car");
+        }
+    ).always(function () {
+        MyApp.div.append('<p>Done!</p>');
+    }
+        );
+});
+
+$("#carsButton").on('click', function () {
+    MyApp.div.html("");
+    $.each(MyApp.cars, function (key, value) {
+        MyApp.div.append('<p>' + value.name + '</p>');
+    });
+});
 
