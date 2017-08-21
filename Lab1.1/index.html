@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="ipstyle.css">
+</head>
+
+<body>
+    <article>
+        <h1>Main Header</h1>
+        <h2>Sub header 1
+        </h2>
+        <p class="times-new-roman-22">
+            This is a 22px font size paragraph with the font family times new roman
+        </p>
+        <p class="arial-16">
+            This is a 16px font size paragraph with the font family arial
+        </p>
+        <p class="arial-16">
+            This is a 16px font size paragraph with the font family arial
+        </p>
+        <h2>
+            sub header 2
+        </h2>
+    </article>
+
+    <div>
+        <button id="button1" onclick="ParagraphStyleOne()">Paragraps styling one</button>
+        <button id="button2" onclick="ParagraphStyleTwo()">Paragraphs styling two</button>
+    </div>
+
+    <form id="myForm">
+        <fieldset>
+            <legend>profile</legend>
+
+            <label for="username">username:</label>
+            <input type="text" id="username">
+
+            <label for="firstname">firstname:</label>
+            <input type="text" id="firstname">
+
+            <label>lastname:
+            <input type="text" id="lastname">
+       </label>
+
+            <label for="phone">phone:</label>
+            <input type="text" id="phone">
+
+            <label for="city">city:</label>
+            <input type="text" id="city">
+            <br>
+            <br>
+
+            <button name="submit" id="submit" onclick="return PopulateTextArea()">
+                submit
+            </button>
+            <br>
+            <br>
+
+        </fieldset>
+    </form>
+    <textarea id="makemevisible" readonly="true" hidden="true"></textarea>
+</body>
+<script>
+    function PopulateTextArea(){
+        var completeString = document.getElementById("username").value+" "+
+        document.getElementById("firstname").value+" "+
+        document.getElementById("lastname").value+" "+
+        document.getElementById("phone").value;
+        
+        var textareaelement = document.getElementById("makemevisible");
+        textareaelement.style.display = "block";
+        textareaelement.innerHTML = completeString;
+        textareaelement.style.backgroundColor = "green";
+        textareaelement.style.color = "white";
+        
+        document.getElementById("myForm").style.display = "none";
+
+        return false; //Have the function return false to stop submission (postback where value dissaperas immediately)
+    }
+
+    var paragraphs = document.getElementsByTagName("p");
+    function ParagraphStyleOne(){
+        for(var i = 0;i<paragraphs.length;i++){
+            paragraphs[i].style.color = "coral";
+            paragraphs[i].style.backgroundColor = "#777";
+            paragraphs[i].style.fontFamily = "verdana";
+            if(i%2==0) //if 
+            {
+                paragraphs[i].style.fontSize = "12px";
+            }
+        }
+    }
+    function ParagraphStyleTwo(){
+        for(var i = 0;i<paragraphs.length;i++){
+            paragraphs[i].style.color = "black";
+            paragraphs[i].style.fontFamily = "times new roman";
+            paragraphs[i].style.fontSize = "14px";
+            paragraphs[i].style.letterSpacing = "2px";
+        }
+    }
+</script>
+
+</html>
