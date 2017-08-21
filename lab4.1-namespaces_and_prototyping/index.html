@@ -1,72 +1,13 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>home</title>
-    <script src="jquery-3.1.1.min.js"></script>
-
-    <script>
-        var Employee = function (name) {
-            this.Name = name;
-            return this.Name;
-        }
-
-        var Car = function (name) {
-            this.Name = name;
-            return this.Name;
-        }
-
-        var employees = [
-            new Employee("ivan"),
-            new Employee("lea"),
-            new Employee("jason"),
-        ]
-
-        var cars = [
-            new Car("fiat"),
-            new Car("peugeot"),
-            new Car("audi"),
-        ]
-
-
-
-        $(document).ready(function () {
-            
-            function populateList1() {
-                $.each(employees, function (key, value) {
-                    $("#list1").append("<li>" + value.Name + "</li>")
-                })
-            };
-            function populateList2() {
-                $.each(cars, function (key, value) {
-                    $("#list2").append("<li>" + value.Name + "</li>")
-                })
-            };
-
-            $("#btn-show-employees").click(populateList1);
-            $("#btn-show-cars").click(populateList2);
-            
-        });
-
-
-
-
-    </script>
+    <title>Labb 4.1</title>
 </head>
-
 <body>
-    <button id="btn-show-employees">
-        show employees
-    </button>
-    <button id="btn-show-cars">
-        show cars
-    </button>
-    <ul id="list1">
-
-    </ul>
-    <ul id="list2">
-
-    </ul>
+    <button id="empButton" style="background-color:Highlight;">Show Employees</button>
+    <button id="carsButton" style="background-color:lightpink;">Show Cars</button>
+    <div id="content"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="javascript.js"></script>
 </body>
-
 </html>
