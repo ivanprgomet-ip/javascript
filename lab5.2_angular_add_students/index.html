@@ -9,14 +9,14 @@
     </head>
     <body>
         <div data-ng-controller="schoolController">
-            <button data-ng-click="studenter=false">Studenter</button>
-            <button data-ng-click="studenter=true">Utbildningar</button>
-            <button data-ng-click="addStudent=true">Add student to Database.</button>
+            <button data-ng-click="studenter=false">Students</button>
+            <button data-ng-click="studenter=true">Educations</button>
+            <button data-ng-click="addStudent=true">Add new student to Database</button>
             <div ng-show="addStudent">
                 Name: <input type="text" data-ng-model="newPersonName">
                 <br>
                 Utbildning: <select data-ng-model="newPersonUtbildning">
-                    <option data-ng-repeat="utbildning in utbildningar | orderBy: 'name'" value="{{utbildning.name}}">{{utbildning.name}}</option>
+                    <option data-ng-repeat="education in educations | orderBy: 'name'" value="{{education.name}}">{{education.name}}</option>
                 </select>
                 <br>
                 Aktiv: <input type="checkbox" data-ng-model="newPersonAktiv">
@@ -32,7 +32,7 @@
                 </div>
                 <div ng-show="studenter">
                     <ul>
-                        <li data-ng-repeat="utbildning in utbildningar | orderBy: 'name'">{{utbildning.name}}</li>
+                        <li data-ng-repeat="education in educations | orderBy: 'name'">{{education.name}}</li>
                     </ul>
                 </div>
             </div>

@@ -4,7 +4,7 @@
 
 App.factory("schoolFactory", function () {
 
-    var utbildningar = [
+    var educations = [
         {
             name: "Webdeveloper within .NET"
         },
@@ -127,8 +127,8 @@ App.factory("schoolFactory", function () {
         return persons;
     };
 
-    factory.getUtbildningar = function () {
-        return utbildningar;
+    factory.getEducations = function () {
+        return educations;
     };
 
     factory.AddPersonToArray = function (person) {
@@ -141,16 +141,16 @@ App.factory("schoolFactory", function () {
 var controllers = {};
 
 controllers.schoolController = function ($scope, schoolFactory) {
-    $scope.utbildningar = schoolFactory.getUtbildningar();
+    $scope.educations = schoolFactory.getEducations();
     $scope.persons = schoolFactory.getPersons();
     $scope.AddPerson = function () {
         schoolFactory.CheckStudent($scope.newPersonName).then(
             function () {
                 schoolFactory.AddPersonToArray({ name: $scope.newPersonName, utbildning: $scope.newPersonUtbildning, status: $scope.newPersonAktiv })
-                angular.element('#error').html("Studenten inlagd").css('color', 'green');
+                angular.element('#error').html("Student added successfully!").css('color', 'green');
             },
             function () {
-                angular.element('#error').html("Studenten finns redan").css('color', 'red');
+                angular.element('#error').html("Student already exists!").css('color', 'red');
             }
         )
     };
