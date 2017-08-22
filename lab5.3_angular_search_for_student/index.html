@@ -1,89 +1,54 @@
-﻿<!DOCTYPE html>
-<html ng-app="myapp">
-<head>
-    <title></title>
-    <meta charset="utf-8" />
-    <script src="angular.min.js"></script>
-    <script src="myapp.js"></script>
-</head>
-<body>
-    <!--
-        Man ska kunna söka efter en student
-        Skapa ett input-element där man kan söka efter en student på namn.
-        Det ska finnas en knapp som heter ”Sök” Resultatet ska visas i en div
-        med hjälp av en Angular repeater. Det ska finnas en ruta där man kan filtrera
-        bland de hittade studenterna. -->
-    <!--
-        Den senaste sökningen ska lagras i LocalStorage.
-        Lägg till en knapp som heter Repeat last Search som fyller i
-        värdet av den senaste  sökningen i sökrutan.  -->
-
-
-    <div ng-controller="HomeController">
-        <!--the HomeController rules this area-->
-        <section id="get-data-section">
-            <button ng-click="GetStudents()">get students</button>
-            <button ng-click="GetEducations()">get educations</button>
-        </section>
-
-        <section id="add-student-section">
-            <button id="add-student-btn">add student</button>
-            <div id="add-student-div" style="display:none;">
-                <!-- the model attributes are used here to push
-                    the values back into the controller so that
-                    we can add the values into the array -->
-                <label>
-                    student name:
-                    <input type="text" ng-model="studentName" />
-                </label>
-                <label>
-                    student education:
-                    <input type="text" ng-model="studentEducation" />
-                </label>
-                <button ng-click="AddStudent()">Add student to database</button>
+﻿<doctype html>
+    <html lang="se" data-ng-app="App">
+    <head>
+        <title>Labb 5.3</title>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="myapp.js"></script>
+    </head>
+    <body>
+        <div data-ng-controller="schoolController">
+            <button data-ng-click="studenter=false">Studenter</button>
+            <button data-ng-click="studenter=true">Utbildningar</button>
+            <button data-ng-click="addStudent=true">Add new student to Database</button>
+            <div ng-show="addStudent">
+                Name: <input type="text" data-ng-model="newPersonName">
+                <br>
+                Utbildning: <select data-ng-model="newPersonUtbildning">
+                    <option data-ng-repeat="utbildning in utbildningar | orderBy: 'name'" value="{{utbildning.name}}">{{utbildning.name}}</option>
+                </select>
+                <br>
+                Aktiv: <input type="checkbox" data-ng-model="newPersonAktiv">
+                <br>
+                <button data-ng-click="AddPerson();">Add Person</button>
+                <div id="error" style="color: red;"></div>
             </div>
-            <script>
-                //when button is clicked, div for entering student info is displayed
-                document.getElementById("add-student-btn").addEventListener("click", function () {
-                    var div = document.getElementById("add-student-div");
-                    div.style.display = "block";
-                })
-            </script>
-        </section>
-
-
-        <h2>students</h2>
-        <section>
-            <h4>search for a student</h4>
-            <input type="text" id="search-for-students" ng-model="searchedTerm" autofocus placeholder="search for a student" />
-            <button ng-click="SearchForStudents()">Search for {{searchedTerm}}</button>
-            <ul id="list-found-students">
-                <li ng-repeat="student in FoundStudents">
-                    {{student.studentName}}, {{student.education}}
-                </li>
-            </ul>
-            <button ng-click="PopulateInputWithRecentSearch()">Repeat Last Search</button>
-        </section>
-
-        <section>
-            <h4>all registered students</h4>
-            <ul id="students-list">
-                <li ng-repeat="student in students">
-                    {{student.studentName}}, {{student.education}}
-                </li>
-            </ul>
-        </section>
-
-        <h2>educations</h2>
-        <section>
-            <ul id="educations-list">
-                <li ng-repeat="education in educations">
-                    {{education.educationName}}
-                </li>
-            </ul>
-        </section>
-    </div>
-
-
-</body>
+            <div id="search">
+                <input type="text" data-ng-model="searchPersonName">
+                <button data-ng-click="SearchPerson();">Sök</button>
+                <br>
+                Filter: <input type="text" data-ng-model="filterList" />
+                <br>
+                <button data-ng-click="GetLocaLStorage();">Repeat Last Search</button>
+            </div>
+            <div id="wrapper">
+                <div>
+                    <ul style="background-color:Highlight;">
+                        <li data-ng-repeat="personS in searchResult | orderBy: 'name' | filter: filterList">{{personS.name}} - {{personS.status}} - {{personS.utbildning}}</li>
+                    </ul>
+                </div>
+                <div ng-hide="studenter">
+                    <ul>
+                        <li data-ng-repeat="person in persons | orderBy: 'name'">{{person.name}} - {{person.status}} - {{person.utbildning}}</li>
+                    </ul>
+                </div>
+                <div ng-show="studenter">
+                    <ul>
+                        <li data-ng-repeat="utbildning in utbildningar | orderBy: 'name'">{{utbildning.name}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
