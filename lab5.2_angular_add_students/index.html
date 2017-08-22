@@ -1,64 +1,41 @@
-﻿<!DOCTYPE html>
-<html ng-app="myapp">
-<head>
-    <title></title>
-    <meta charset="utf-8" />
-    <script src="angular.min.js"></script>
-    <script src="myapp.js"></script>
-</head>
-<body>
-    <!-- todo: EXTRAUPPGIFT 
-        Det ska inte gå att lägga till två studenter med samma namn. 
-        Lägg till en <div> som ska visa meddelanden om hur det gått.
-        Metoden som knappen Add student to Database kallar på ska ligga i Kontrollen.  
-        Den ska i sin tur kalla på en motsvarande metod i Factory:n. Metoden i Factory:n ska returnera en promise.  
-        Baserat på promisens resultat ska det visas ett meddelande i div:en om den har lyckat eller inte.  
-        Om det har lyckats så ska diven vara ljusgrön. Om den inte lyckats ska den vara ljusröd.  -->
-
-    <div ng-controller="HomeController">
-        <!--the HomeController rules this area-->
-
-        <button ng-click="GetStudents()">get students</button>
-        <button ng-click="GetEducations()">get educations</button>
-
-        <button id="add-student-btn">add student</button>
-        <div id="add-student-div" style="display:none;">
-            <!-- the model attributes are used here to push
-                the values back into the controller so that
-                we can add the values into the array -->
-            <label>
-                student name:
-                <input type="text" ng-model="studentName" />
-            </label>
-            <label>student education:
-                <input type="text" ng-model="studentEducation" />
-            </label>
-            <button ng-click="AddStudent()">Add student to database</button>
+﻿<doctype html>
+    <html lang="se" data-ng-app="App">
+    <head>
+        <title>Labb 5.1</title>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="myapp.js"></script>
+    </head>
+    <body>
+        <div data-ng-controller="schoolController">
+            <button data-ng-click="studenter=false">Studenter</button>
+            <button data-ng-click="studenter=true">Utbildningar</button>
+            <button data-ng-click="addStudent=true">Add student to Database.</button>
+            <div ng-show="addStudent">
+                Name: <input type="text" data-ng-model="newPersonName">
+                <br>
+                Utbildning: <select data-ng-model="newPersonUtbildning">
+                    <option data-ng-repeat="utbildning in utbildningar | orderBy: 'name'" value="{{utbildning.name}}">{{utbildning.name}}</option>
+                </select>
+                <br>
+                Aktiv: <input type="checkbox" data-ng-model="newPersonAktiv">
+                <br>
+                <button data-ng-click="AddPerson();">Add Person</button>
+                <div id="error" style="color: red;"></div>
+            </div>
+            <div id="wrapper">
+                <div ng-hide="studenter">
+                    <ul>
+                        <li data-ng-repeat="person in persons | orderBy: 'name'">{{person.name}} - {{person.status}} - {{person.utbildning}}</li>
+                    </ul>
+                </div>
+                <div ng-show="studenter">
+                    <ul>
+                        <li data-ng-repeat="utbildning in utbildningar | orderBy: 'name'">{{utbildning.name}}</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <script>
-            //when button is clicked, div for entering student info is displayed
-            document.getElementById("add-student-btn").addEventListener("click", function () {
-                var div = document.getElementById("add-student-div");
-                div.style.display = "block";
-            })
-        </script>
-
-
-        <h2>students</h2>
-        <ul id="students-list">
-            <li ng-repeat="student in students">
-                {{student.studentName}}, {{student.education}}
-            </li>
-        </ul>
-
-        <h2>educations</h2>
-        <ul id="educations-list">
-            <li ng-repeat="education in educations">
-                {{education.educationName}}
-            </li>
-        </ul>
-    </div>
-
-
-</body>
+    </body>
 </html>
