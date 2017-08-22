@@ -1,33 +1,27 @@
-﻿<!DOCTYPE html>
-<html ng-app="myapp">
-<head>
-    <title></title>
-    <meta charset="utf-8" />
-    <script src="angular.min.js"></script>
-    <script src="myapp.js"></script>
-</head>
-<body>
-    <div ng-controller="HomeController">
-        <!--the HomeController rules this area-->
-
-        <button ng-click="GetStudents()">get students</button>
-        <button ng-click="GetEducations()">get educations</button>
-
-        <h2>students</h2>
-        <ul id="students-list">
-            <li ng-repeat="student in students">
-                {{student.studentName}}, {{student.education}}
-            </li>
-        </ul>
-
-        <h2>educations</h2>
-        <ul id="educations-list">
-            <li ng-repeat="education in educations">
-                {{education.educationName}}
-            </li>
-        </ul>
-    </div>
-
-
-</body>
+﻿<doctype html>
+    <html lang="se" data-ng-app="App">
+    <head>
+        <title>Labb 5.1</title>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="myapp.js"></script>
+    </head>
+    <body>
+        <div data-ng-controller="schoolController">
+            <button data-ng-click="studenter=false">Studenter</button>
+            <button data-ng-click="studenter=true">Utbildningar</button>
+            <div id="wrapper">
+                <div ng-hide="studenter">
+                    <ul>
+                        <li data-ng-repeat="person in persons | orderBy: 'name'">{{person.name}} - {{person.status}} - {{person.utbildning}}</li>
+                    </ul>
+                </div>
+                <div ng-show="studenter">
+                    <ul>
+                        <li data-ng-repeat="education in educations | orderBy: 'name'">{{education.name}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
